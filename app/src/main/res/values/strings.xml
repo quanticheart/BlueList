@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Blue List</string>
+    <string name="app_name">BlueList</string>
+    <string name="app_name_debug">BlueList Debug</string>
 </resources>
