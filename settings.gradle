@@ -1,2 +1,5 @@
 rootProject.name = "Blue List"
 include ':app'
+include ':core'
+include ':data'
+include ':domain'
