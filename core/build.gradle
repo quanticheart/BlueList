@@ -69,12 +69,8 @@ android {
 }
 
 dependencies {
-    implementation kotlinLibs
-    implementation androidxLibs
-    implementation injectLibs
+    implementation coreLibs
 
     //Kotlin verify code
     ktlint(ktlintLib.sdk)
-
-    kapt kaptLibs
 }

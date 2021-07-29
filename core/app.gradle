@@ -67,14 +67,40 @@ ext {
             room    : '2.3.0',
             retrofit: '2.6.2',
     ]
-    repository = [
-            room               : "androidx.room:room-runtime:$repositoryVersions.room",
-            room_coroutine     : "androidx.room:room-ktx:$repositoryVersions.room",
+
+    database = [
+            room          : "androidx.room:room-runtime:$repositoryVersions.room",
+            room_coroutine: "androidx.room:room-ktx:$repositoryVersions.room",
+    ]
+
+    network = [
             logging            : 'com.squareup.okhttp3:logging-interceptor:4.2.2',
             retrofit2          : "com.squareup.retrofit2:retrofit:$repositoryVersions.retrofit",
             retrofit2_converter: "com.squareup.retrofit2:converter-gson:$repositoryVersions.retrofit"
     ]
-    repositoryLibs = repository.values()
+
+    def app = []
+    app.addAll(kotlin.values())
+    app.addAll(androidx.values())
+    app.addAll(inject.values())
+    appLibs = app.asCollection()
+
+    def core = []
+    core.addAll(kotlin.values())
+    core.addAll(inject.values())
+    coreLibs = core.asCollection()
+
+    def data = []
+    data.addAll(kotlin.values())
+    data.addAll(inject.values())
+    data.addAll(database.values())
+    data.addAll(network.values())
+    dataLibs = data.asCollection()
+
+    def domain = []
+    domain.addAll(kotlin.values())
+    domain.addAll(inject.values())
+    domainLibs = domain.asCollection()
 
     //    KTLint for review Kotlin Code
     //==============================================================================================

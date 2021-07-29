@@ -123,10 +123,7 @@ android {
 }
 
 dependencies {
-    implementation kotlinLibs
-    implementation androidxLibs
-    implementation injectLibs
-    implementation repositoryLibs
+    implementation appLibs
 
     //Kotlin verify code
     ktlint(ktlintLib.sdk)

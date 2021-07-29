@@ -69,14 +69,13 @@ android {
 }
 
 dependencies {
-    implementation kotlinLibs
-    implementation injectLibs
-    implementation repositoryLibs
+    implementation dataLibs
 
     //Kotlin verify code
     ktlint(ktlintLib.sdk)
 
     kapt "androidx.room:room-compiler:2.3.0"
 
+    implementation project(":core")
     implementation project(":domain")
 }

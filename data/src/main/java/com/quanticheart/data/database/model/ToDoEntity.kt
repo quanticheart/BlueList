@@ -10,8 +10,8 @@ import java.util.*
 
 @Entity
 data class ToDoEntity(
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    var _id: Int = 0,
     val date: Long = Date().time,
     val title: String,
     val description: String,
@@ -21,8 +21,8 @@ data class ToDoEntity(
     val type: Int = 1
 ) : DomainMapperWithList<ToDo, ToDoSimple> {
     override fun mapToDomainModel() =
-        ToDo(id, Date(date), title, description, color, Date(alarm), check, type)
+        ToDo(_id, Date(date), title, description, color, Date(alarm), check, type)
 
     override fun mapToDomainListModel() =
-        ToDoSimple(id, Date(date), color, Date(alarm), title, check, type)
+        ToDoSimple(_id, Date(date), color, Date(alarm), title, check, type)
 }
