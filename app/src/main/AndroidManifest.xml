@@ -4,6 +4,7 @@
     package="com.quanticheart.bluelist">
 
     <application
+        android:name=".BluListApplication"
         android:allowBackup="false"
         android:icon="${appIcon}"
         android:label="${labelName}"
