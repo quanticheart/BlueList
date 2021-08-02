@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.quanticheart.core.application.timber
+package com.quanticheart.core.extentions.commons.libs.timber
 
 import android.app.Application
 import timber.log.Timber

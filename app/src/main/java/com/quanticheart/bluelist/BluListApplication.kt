@@ -1,6 +1,6 @@
 package com.quanticheart.bluelist
 
-import com.quanticheart.core.application.BaseApplication
+import com.quanticheart.core.base.application.BaseApplication
 import com.quanticheart.data.di.databaseModule
 import com.quanticheart.data.di.repositoryModule
 import com.quanticheart.domain.di.interactionModule

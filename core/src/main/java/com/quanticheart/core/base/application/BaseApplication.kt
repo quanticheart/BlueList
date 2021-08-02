@@ -1,7 +1,7 @@
-package com.quanticheart.core.application
+package com.quanticheart.core.base.application
 
 import android.app.Application
-import com.quanticheart.core.application.timber.plantTimberTree
+import com.quanticheart.core.extentions.commons.libs.timber.plantTimberTree
 
 abstract class BaseApplication : Application() {
 

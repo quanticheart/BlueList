@@ -1,4 +1,4 @@
-package com.quanticheart.core.application.timber
+package com.quanticheart.core.extentions.commons.libs.timber
 
 import android.util.Log
 import com.quanticheart.core.exeptions.sendException
