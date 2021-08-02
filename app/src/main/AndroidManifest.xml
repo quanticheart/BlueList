@@ -4,7 +4,7 @@
     package="com.quanticheart.bluelist">
 
     <application
-        android:name=".BluListApplication"
+        android:name=".application.BluListApplication"
         android:allowBackup="false"
         android:icon="${appIcon}"
         android:label="${labelName}"
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueList"
         tools:ignore="AllowBackup">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

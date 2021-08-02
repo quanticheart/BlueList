@@ -1,5 +1,6 @@
-package com.quanticheart.bluelist
+package com.quanticheart.bluelist.application
 
+import com.quanticheart.bluelist.BuildConfig
 import com.quanticheart.core.base.application.BaseApplication
 import com.quanticheart.data.di.databaseModule
 import com.quanticheart.data.di.repositoryModule
