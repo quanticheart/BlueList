@@ -1,6 +1,6 @@
 package com.quanticheart.bluelist
 
-import android.app.Application
+import com.quanticheart.core.application.BaseApplication
 import com.quanticheart.data.di.databaseModule
 import com.quanticheart.data.di.repositoryModule
 import com.quanticheart.domain.di.interactionModule
@@ -9,7 +9,10 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class BluListApplication : Application() {
+class BluListApplication : BaseApplication() {
+
+    override fun buildVariant(): Boolean = BuildConfig.DEBUG
+
     override fun onCreate() {
         super.onCreate()
 

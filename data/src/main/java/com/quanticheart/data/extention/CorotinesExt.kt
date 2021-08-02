@@ -11,4 +11,3 @@ suspend fun <T, E> T.coroutineIO(block: suspend (T) -> E): E {
         block(this@coroutineIO)
     }
 }
-

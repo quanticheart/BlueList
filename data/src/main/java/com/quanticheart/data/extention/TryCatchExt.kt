@@ -1,7 +1,7 @@
 package com.quanticheart.data.extention
 
 import com.quanticheart.core.exeptions.sendException
-import com.quanticheart.core.extentions.toThrowable
+import com.quanticheart.core.extentions.system.toThrowable
 import com.quanticheart.domain.result.RepositoryError
 import com.quanticheart.domain.result.ResultRepository
 
