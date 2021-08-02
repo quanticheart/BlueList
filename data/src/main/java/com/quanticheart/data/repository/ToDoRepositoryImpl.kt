@@ -5,7 +5,7 @@ import com.quanticheart.data.database.model.ToDoEntity
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQueryDeleteTableByID
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQuerySelectAll
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQuerySelectByID
-import com.quanticheart.data.extention.coroutineIO
+import com.quanticheart.core.extentions.system.coroutineIO
 import com.quanticheart.data.extention.tryCatchResult
 import com.quanticheart.domain.model.ToDo
 import com.quanticheart.domain.model.ToDoSimple

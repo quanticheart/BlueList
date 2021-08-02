@@ -10,12 +10,18 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.quanticheart.core.base.viewModel.BaseViewModel
 import com.quanticheart.core.databinding.FragmentBaseBinding
+import org.koin.android.viewmodel.ext.android.viewModel
+import java.lang.reflect.ParameterizedType
+import kotlin.reflect.KClass
 
-abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resLayout: Int) :
+abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBinding>(@LayoutRes private val resLayout: Int) :
     Fragment() {
 
-    protected val binding: T by
+    protected val viewModel: viewModel? by viewModel(getClassByT())
+
+    protected val binding: dataBinding by
     lazy {
         DataBindingUtil.inflate(
             layoutInflater, resLayout, null, false
@@ -24,7 +30,8 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resLayou
 
     private lateinit var baseBinding: FragmentBaseBinding
 
-    abstract fun onFinishBindingView(binding: T)
+    abstract fun onFinishBindingView(binding: dataBinding)
+    abstract fun onFinishLoadViewModel(viewModel: viewModel)
 
     /**
      * Create view
@@ -45,5 +52,10 @@ abstract class BaseFragment<T : ViewDataBinding>(@LayoutRes private val resLayou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onFinishBindingView(binding)
+        viewModel?.let { onFinishLoadViewModel(it) }
     }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun getClassByT(): KClass<viewModel> =
+        ((javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<viewModel>).kotlin
 }

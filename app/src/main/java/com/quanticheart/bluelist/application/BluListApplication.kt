@@ -1,6 +1,7 @@
 package com.quanticheart.bluelist.application
 
 import com.quanticheart.bluelist.BuildConfig
+import com.quanticheart.bluelist.view.di.appModule
 import com.quanticheart.core.base.application.BaseApplication
 import com.quanticheart.data.di.databaseModule
 import com.quanticheart.data.di.repositoryModule
@@ -20,10 +21,11 @@ class BluListApplication : BaseApplication() {
         startKoin {
             if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
             androidContext(this@BluListApplication)
-            modules(dataModules + domainModules)
+            modules(appModules + dataModules + domainModules)
         }
     }
 
+    val appModules = listOf(appModule)
     val dataModules = listOf(databaseModule, repositoryModule)
     val domainModules = listOf(interactionModule)
 }
