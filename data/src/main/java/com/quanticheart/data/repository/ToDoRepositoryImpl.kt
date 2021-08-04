@@ -46,27 +46,14 @@ class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
     override suspend fun insert(toDo: ToDoInsert): ResultRepository<Boolean> {
         return coroutineIO {
             tryCatchResult("Erro ao tentar inserir") {
-//                database.insert(
-//                    ToDoEntity(
-//                        date = toDo.date.time,
-//                        title = toDo.title,
-//                        description = toDo.description,
-//                        color = toDo.color,
-//                        alarm = toDo.alarm.time,
-//                        check = toDo.check,
-//                        type = toDo.type
-//                    )
-//                ) > 0
-
                 database.insert(
                     ToDoEntity(
                         date = Date().time,
                         title = toDo.title,
                         description = "TESTES",
-                        color = "#000000",
+                        priority = 3,
                         alarm = Date().time,
-                        check = false,
-                        type = 1
+                        check = false
                     )
                 ) > 0
             }

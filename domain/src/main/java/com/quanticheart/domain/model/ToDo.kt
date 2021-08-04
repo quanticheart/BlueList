@@ -7,8 +7,7 @@ data class ToDo(
     val date: Date,
     val title: String,
     val description: String,
-    val color: String,
-    val alarm: Date,
-    val check: Boolean,
-    val type: Int
+    val priority: Int,
+    val alarm: Date?,
+    val check: Boolean
 )

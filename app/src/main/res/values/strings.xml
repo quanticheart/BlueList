@@ -5,4 +5,10 @@
     <string name="hint_to_do_title">Titulo da tarefa</string>
     <string name="label_cancel">Cancelar</string>
     <string name="label_add">Adicionar</string>
+    <string name="hint_to_do_description">Descreva a tarefa</string>
+    <string name="hint_to_do_priority">Prioridade</string>
+    <string name="hint_to_do_add_alarm">Que Adicionar um Alarme?</string>
+    <string name="hint_to_do_alarm_select_msg">Click para adicionar a data e hora do alarme</string>
+    <string name="msg_warning_to_do_date_alarm">Seleciona uma data e hora para o alarme</string>
+    <string name="msg_warning_to_do_write_all_fields">Digite todos os campos</string>
 </resources>

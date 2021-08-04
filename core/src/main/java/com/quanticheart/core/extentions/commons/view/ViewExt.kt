@@ -1,0 +1,40 @@
+package com.quanticheart.core.extentions.commons.view
+
+import android.os.SystemClock
+import android.view.View
+
+class SafeClickListener(
+    private var defaultInterval: Int = 2000,
+    private val onSafeCLick: (View) -> Unit
+) : View.OnClickListener {
+    private var lastTimeClicked: Long = 0
+    override fun onClick(v: View) {
+        if (SystemClock.elapsedRealtime() - lastTimeClicked < defaultInterval) {
+            return
+        }
+        lastTimeClicked = SystemClock.elapsedRealtime()
+        onSafeCLick(v)
+    }
+}
+
+fun View.setSafeOnClickListener(onSafeClick: (View) -> Unit) {
+    val safeClickListener = SafeClickListener {
+        onSafeClick(it)
+    }
+    setOnClickListener(safeClickListener)
+}
+
+fun View.show() {
+    visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+    visibility = View.INVISIBLE
+}
+
+fun View.statusInvisible(status: Boolean) {
+    if (status)
+        show()
+    else
+        invisible()
+}

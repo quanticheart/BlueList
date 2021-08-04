@@ -1,4 +1,4 @@
-package com.quanticheart.core.extentions.binding
+package com.quanticheart.core.extentions.commons.view
 
 import android.widget.CheckBox
 
