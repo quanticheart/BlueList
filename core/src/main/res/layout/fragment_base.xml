@@ -12,7 +12,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarDefaultFragment"
-            style="@style/defaultToolbar"
+            style="@style/default_toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_default_height"
             android:visibility="gone"

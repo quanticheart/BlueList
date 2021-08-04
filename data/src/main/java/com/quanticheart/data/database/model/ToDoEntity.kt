@@ -24,5 +24,5 @@ data class ToDoEntity(
         ToDo(_id, Date(date), title, description, color, Date(alarm), check, type)
 
     override fun mapToDomainListModel() =
-        ToDoSimple(_id, Date(date), color, Date(alarm), title, check, type)
+        ToDoSimple(_id, Date(date), color, Date(alarm), title, check, type, false)
 }

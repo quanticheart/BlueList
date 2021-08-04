@@ -1,4 +1,4 @@
-package com.quanticheart.core.base.recyclerView
+package com.quanticheart.core.generics.recyclerView
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

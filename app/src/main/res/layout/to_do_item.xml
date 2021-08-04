@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="todo"
+            type="com.quanticheart.domain.model.ToDoSimple" />
+
+     </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/default_card_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/itemView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_toStartOf="@+id/itemView4"
+                android:fontFamily="sans-serif-light"
+                android:text="@{todo.title}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="To Do App" />
+
+            <TextView
+                android:id="@+id/itemView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/itemView1"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_toStartOf="@+id/itemView4"
+                android:fontFamily="sans-serif-light"
+                android:text="@{todo.date.toString()}"
+                android:textSize="12sp"
+                tools:text="2021-08-03 22:07:00" />
+
+            <CheckBox
+                android:id="@+id/itemView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/itemView1"
+                android:layout_alignBottom="@+id/itemView2"
+                android:layout_alignParentEnd="true"
+                android:checked="@{todo.finish}"
+                android:tint="@color/white" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

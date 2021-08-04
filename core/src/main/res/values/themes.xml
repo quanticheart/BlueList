@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="defaultToolbar">
+    <style name="default_toolbar">
         <item name="android:layout_height">@dimen/toolbar_default_height</item>
         <item name="android:background">@color/purple_500</item>
         <item name="android:orientation">vertical</item>
@@ -23,5 +23,21 @@
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="default_card_style" parent="CardView">
+        <item name="cardCornerRadius">@dimen/default_radius</item>
+        <item name="cardElevation">@dimen/default_elevation</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:layout_marginLeft">@dimen/default_margin</item>
+        <item name="android:layout_marginRight">@dimen/default_margin</item>
+    </style>
+
+    <style name="default_list_style">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:fadingEdge">none</item>
     </style>
 </resources>

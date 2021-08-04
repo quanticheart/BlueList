@@ -27,11 +27,6 @@ open class BaseViewModel : ViewModel() {
         _loading.value = false
     }
 
-    protected fun String.alertError() {
-        _throwable.value = Throwable(this)
-        _throwable.value = null
-    }
-
     protected fun Throwable.alertError() {
         _throwable.value = this
         _throwable.value = null

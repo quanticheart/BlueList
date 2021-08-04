@@ -9,5 +9,6 @@ data class ToDoSimple(
     val alarm: Date,
     val title: String,
     val check: Boolean,
-    val type: Int
+    val type: Int,
+    val finish: Boolean
 )
