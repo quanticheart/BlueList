@@ -14,7 +14,7 @@
             type="com.quanticheart.bluelist.view.fragment.list.ToDoListViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.MainActivity">
@@ -29,5 +29,15 @@
             tools:context=".view.MainActivity"
             tools:listitem="@layout/to_do_item" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addMoreAmiibo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/default_margin"
+            android:contentDescription="@string/label_add_new_to_do"
+            app:srcCompat="@drawable/ic_baseline_plus_one" />
+
+    </RelativeLayout>
 </layout>

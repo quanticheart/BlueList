@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BlueList</string>
     <string name="app_name_debug">BlueList Debug</string>
+    <string name="label_add_new_to_do">Adicionar novo a fazer</string>
+    <string name="hint_to_do_title">Titulo da tarefa</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_add">Adicionar</string>
 </resources>

@@ -3,6 +3,7 @@ package com.quanticheart.bluelist.view.fragment.list
 import com.quanticheart.bluelist.R
 import com.quanticheart.bluelist.databinding.FragmentToDoListBinding
 import com.quanticheart.bluelist.view.fragment.list.adapter.ToDoAdapter
+import com.quanticheart.bluelist.view.fragment.list.dialog.addToDo
 import com.quanticheart.core.base.fragment.BaseFragment
 import com.quanticheart.core.extentions.system.observeListNotEmpty
 import com.quanticheart.core.generics.recyclerView.ListClickListener
@@ -17,6 +18,11 @@ class ToDoListFragment :
     override fun onFinishBindingView(binding: FragmentToDoListBinding) {
         binding.viewModel = viewModel
         binding.adapter = adapter
+        binding.addMoreAmiibo.setOnClickListener {
+            addToDo {
+                viewModel?.addToDo(it)
+            }
+        }
     }
 
     override fun onFinishLoadViewModel(viewModel: ToDoListViewModel) {
