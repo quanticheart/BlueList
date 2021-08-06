@@ -31,8 +31,8 @@ class DialogAddToDo(
         binding.priorityGroup.setCheckedListener {
             priority = when (it) {
                 R.id.low -> 1
-//                R.id.medium -> 2
-//                R.id.high -> 3
+                R.id.medium -> 2
+                R.id.high -> 3
                 else -> 1
             }
         }
@@ -50,7 +50,10 @@ class DialogAddToDo(
                 activity.showTimePicker { time ->
                     selectedDate = "$selectedDate $time"
                     dateAlarm = selectedDate.toDate("yyyy/MM/dd HH:mm:ss")
-                    binding.addAlarmDate.text = selectedDate.toDateLabel("yyyy/MM/dd HH:mm:ss","dd 'de' MMMM 'de' yyyy 'as' HH:mm")
+                    binding.addAlarmDate.text = selectedDate.toDateLabel(
+                        "yyyy/MM/dd HH:mm:ss",
+                        "dd 'de' MMMM 'de' yyyy 'as' HH:mm"
+                    )
                 }
             }
         }
@@ -65,7 +68,8 @@ class DialogAddToDo(
                 if (title.isNullOrEmpty()) {
                     activity.toast(getString(R.string.msg_warning_to_do_write_all_fields))
                 } else {
-                    callback(ToDoInsert(Date(), title, desc, priority, Date()))
+                    callback(ToDoInsert(Date(), title, desc, priority, dateAlarm))
+                    this.safeHide()
                 }
             }
         }
