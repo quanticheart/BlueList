@@ -31,8 +31,8 @@ class DialogAddToDo(
         binding.priorityGroup.setCheckedListener {
             priority = when (it) {
                 R.id.low -> 1
-                R.id.medium -> 2
-                R.id.high -> 3
+//                R.id.medium -> 2
+//                R.id.high -> 3
                 else -> 1
             }
         }

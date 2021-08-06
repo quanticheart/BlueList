@@ -63,20 +63,28 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <RadioButton
-                        android:checked="true"
                         android:id="@+id/low"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="@dimen/default_radio_button_size"
+                        android:layout_height="@dimen/default_radio_button_size"
+                        android:background="@drawable/selector_radio_button_low"
+                        android:button="@null"
+                        android:checked="true" />
 
                     <RadioButton
                         android:id="@+id/medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="@dimen/default_radio_button_size"
+                        android:layout_height="@dimen/default_radio_button_size"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:background="@drawable/selector_radio_button_medium"
+                        android:button="@null" />
 
                     <RadioButton
                         android:id="@+id/high"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="@dimen/default_radio_button_size"
+                        android:layout_height="@dimen/default_radio_button_size"
+                        android:layout_marginStart="@dimen/default_margin"
+                        android:background="@drawable/selector_radio_button_high"
+                        android:button="@null" />
 
                 </RadioGroup>
 
