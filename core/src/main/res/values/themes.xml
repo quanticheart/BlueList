@@ -11,7 +11,6 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
 
     <style name="default_toolbar">
@@ -40,4 +39,28 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:fadingEdge">none</item>
     </style>
+
+    <style name="default_edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/selector_edittext</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textColorHint">@color/text_color_hint</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:padding">@dimen/default_margin</item>
+        <item name="android:inputType">text</item>
+        <item name="android:maxLength">250</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="default_edittext_text_field" parent="default_edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:inputType">text|textMultiLine</item>
+        <item name="android:gravity">top</item>
+        <item name="android:maxLength">500</item>
+        <item name="android:maxLines">10</item>
+    </style>
+
 </resources>

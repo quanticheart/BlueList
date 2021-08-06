@@ -15,40 +15,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/background"
             android:orientation="vertical"
             android:padding="@dimen/default_margin">
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bottomsheet_slider_indicator"
+                tools:ignore="ContentDescription" />
+
             <EditText
                 android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/default_edittext"
+                android:layout_marginTop="@dimen/default_margin"
                 android:autofillHints="@string/hint_to_do_title"
-                android:hint="@string/hint_to_do_title"
-                android:inputType="text"
-                android:maxLength="255"
-                android:maxLines="1"
-                android:textSize="14sp" />
+                android:hint="@string/hint_to_do_title" />
 
             <EditText
                 android:id="@+id/desc"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                style="@style/default_edittext_text_field"
+                android:layout_marginTop="@dimen/default_margin"
                 android:autofillHints="@string/hint_to_do_description"
-                android:hint="@string/hint_to_do_description"
-                android:inputType="text"
-                android:maxLength="500"
-                android:maxLines="10"
-                android:textSize="14sp" />
+                android:hint="@string/hint_to_do_description" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hint_to_do_priority"
-                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/default_text_size"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -92,13 +94,15 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hint_to_do_add_alarm"
-                    android:textSize="14sp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/default_text_size"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -117,8 +121,10 @@
 
             <TextView
                 android:id="@+id/addAlarmDate"
+                style="@style/default_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
                 android:text="@string/hint_to_do_alarm_select_msg"
                 android:visibility="invisible"
                 tools:visibility="visible" />
