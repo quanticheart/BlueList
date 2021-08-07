@@ -41,7 +41,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="@dimen/default_margin"
                 android:layout_marginTop="@dimen/default_margin"
-                android:layout_toStartOf="@+id/itemView4"
+                android:layout_toStartOf="@+id/checkbox"
                 android:fontFamily="sans-serif-light"
                 android:text="@{todo.title}"
                 android:textColor="@color/text_color"
@@ -57,7 +57,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:layout_toStartOf="@+id/itemView4"
+                android:layout_toStartOf="@+id/checkbox"
                 android:fontFamily="sans-serif-light"
                 android:textColor="@color/text_color_hint"
                 android:textSize="12sp"
@@ -65,7 +65,7 @@
                 tools:text="2021-08-03 22:07:00" />
 
             <CheckBox
-                android:id="@+id/itemView4"
+                android:id="@+id/checkbox"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignTop="@+id/itemView1"

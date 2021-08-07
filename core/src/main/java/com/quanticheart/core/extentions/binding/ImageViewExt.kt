@@ -1,6 +1,6 @@
 package com.quanticheart.core.extentions.binding
 
-import android.widget.ImageView
+import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.quanticheart.core.R
@@ -8,7 +8,7 @@ import com.quanticheart.core.extentions.vars.toDateLabel
 import java.util.*
 
 @BindingAdapter(value = ["priorityColor"])
-fun ImageView.priorityColor(priority: Int) {
+fun View.priorityColor(priority: Int) {
     val color = when (priority) {
         1 -> R.color.priority_color_low
         2 -> R.color.priority_color_medium

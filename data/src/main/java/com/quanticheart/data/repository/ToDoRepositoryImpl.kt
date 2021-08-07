@@ -7,6 +7,7 @@ import com.quanticheart.data.database.model.ToDoEntity
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQueryDeleteTableByID
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQuerySelectAll
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQuerySelectByID
+import com.quanticheart.data.extention.toSuccessResult
 import com.quanticheart.data.extention.tryCatchResult
 import com.quanticheart.domain.model.ToDo
 import com.quanticheart.domain.model.ToDoInsert
@@ -16,10 +17,10 @@ import com.quanticheart.domain.result.ResultRepository
 import java.util.*
 
 class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
-    override suspend fun getDetails(id: String): ResultRepository<ToDo> {
+    override suspend fun getDetails(id: Int): ResultRepository<ToDo> {
         return coroutineIO {
             tryCatchResult("Erro ao tentar carregar detalhes") {
-                val q = getQuerySelectByID<ToDoEntity>(id)
+                val q = getQuerySelectByID<ToDoEntity>(id.toString())
                 database.selectByID(q).mapToDomainModel()
             }
         }
@@ -58,5 +59,9 @@ class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
                 ) > 0
             }
         }
+    }
+
+    override suspend fun finish(id: Int): ResultRepository<Boolean> {
+        return true.toSuccessResult()
     }
 }

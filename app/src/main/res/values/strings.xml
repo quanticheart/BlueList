@@ -11,4 +11,7 @@
     <string name="hint_to_do_alarm_select_msg">Click para adicionar a data e hora do alarme</string>
     <string name="msg_warning_to_do_date_alarm">Seleciona uma data e hora para o alarme</string>
     <string name="msg_warning_to_do_write_all_fields">Digite todos os campos</string>
+    <string name="label_title_finish_to_do">Finalizar Tarefa?</string>
+    <string name="label_finish">Finalizar</string>
+    <string name="label_sub_msg_finish_to_do">Deseja finalizar a tarefa <b>%1s</b> agora?</string>
 </resources>

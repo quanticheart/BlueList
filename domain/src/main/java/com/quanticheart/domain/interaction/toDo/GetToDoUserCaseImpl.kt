@@ -7,7 +7,7 @@ import com.quanticheart.domain.repository.ToDoRepository
 import com.quanticheart.domain.result.ResultRepository
 
 class GetToDoUserCaseImpl(private val repository: ToDoRepository) : GetToDoUserCase {
-    override suspend fun getDetails(id: String): ResultRepository<ToDo> =
+    override suspend fun getDetails(id: Int): ResultRepository<ToDo> =
         repository.getDetails(id)
 
     override suspend fun getList(): ResultRepository<List<ToDoSimple>> =
@@ -18,5 +18,8 @@ class GetToDoUserCaseImpl(private val repository: ToDoRepository) : GetToDoUserC
 
     override suspend fun insert(toDo: ToDoInsert): ResultRepository<Boolean> =
         repository.insert(toDo)
+
+    override suspend fun finish(id: Int): ResultRepository<Boolean> =
+        repository.finish(id)
 
 }

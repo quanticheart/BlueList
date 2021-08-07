@@ -31,4 +31,10 @@ class ToDoListViewModel(private val userCase: GetToDoUserCase) : BaseViewModel()
             userCase.insert(toDo)
         }
     }
+
+    fun finishToDo(id: Int) {
+        coroutineScopeLaunchLoading {
+            userCase.finish(id)
+        }
+    }
 }
