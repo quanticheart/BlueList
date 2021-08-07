@@ -49,11 +49,8 @@ class DialogAddToDo(
                 selectedDate = date
                 activity.showTimePicker { time ->
                     selectedDate = "$selectedDate $time"
-                    dateAlarm = selectedDate.toDate("yyyy/MM/dd HH:mm:ss")
-                    binding.addAlarmDate.text = selectedDate.toDateLabel(
-                        "yyyy/MM/dd HH:mm:ss",
-                        "dd 'de' MMMM 'de' yyyy 'as' HH:mm"
-                    )
+                    dateAlarm = selectedDate.toDate()
+                    binding.addAlarmDate.text = selectedDate.toDateLabel()
                 }
             }
         }

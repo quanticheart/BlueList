@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,7 +13,7 @@
             name="todo"
             type="com.quanticheart.domain.model.ToDoSimple" />
 
-     </data>
+    </data>
 
     <androidx.cardview.widget.CardView
         style="@style/default_card_style"
@@ -22,6 +23,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="0dp"
+                android:layout_alignTop="@+id/itemView1"
+                android:layout_alignBottom="@+id/itemView2"
+                app:priorityColor="@{todo.priority}"
+                tools:background="@color/black"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/itemView1"
@@ -34,7 +44,8 @@
                 android:layout_toStartOf="@+id/itemView4"
                 android:fontFamily="sans-serif-light"
                 android:text="@{todo.title}"
-                android:textSize="16sp"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/default_text_size"
                 android:textStyle="bold"
                 tools:text="To Do App" />
 
@@ -48,19 +59,21 @@
                 android:layout_marginBottom="@dimen/default_margin"
                 android:layout_toStartOf="@+id/itemView4"
                 android:fontFamily="sans-serif-light"
-                android:text="@{todo.date.toString()}"
+                android:textColor="@color/text_color_hint"
                 android:textSize="12sp"
+                app:toDoDate="@{todo.date}"
                 tools:text="2021-08-03 22:07:00" />
 
             <CheckBox
                 android:id="@+id/itemView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignTop="@+id/itemView1"
-                android:layout_alignBottom="@+id/itemView2"
                 android:layout_alignParentEnd="true"
-                android:checked="@{todo.finish}"
-                android:tint="@color/white" />
+                android:layout_marginEnd="@dimen/default_margin"
+                android:background="@drawable/selector_check_box"
+                android:button="@null"
+                android:checked="@{todo.finish}" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

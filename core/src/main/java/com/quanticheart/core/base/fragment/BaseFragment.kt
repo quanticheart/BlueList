@@ -55,6 +55,10 @@ abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBin
         viewModel?.let { onFinishLoadViewModel(it) }
     }
 
+    fun loading(status: Boolean) {
+        baseBinding.flipperLoading.displayedChild = if (status) 1 else 0
+    }
+
     @Suppress("UNCHECKED_CAST")
     private fun getClassByT(): KClass<viewModel> =
         ((javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<viewModel>).kotlin

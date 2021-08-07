@@ -15,3 +15,14 @@ inline fun <E, T : Iterable<E>> LiveData<T>.observeListNotEmpty(
         }
     })
 }
+
+inline fun <T> LiveData<T>.observerNotNull(
+    lifecycleOwner: LifecycleOwner,
+    crossinline callback: (data: T) -> Unit
+) {
+    this.observe(lifecycleOwner, {
+        it?.let { t ->
+            callback(t)
+        }
+    })
+}
