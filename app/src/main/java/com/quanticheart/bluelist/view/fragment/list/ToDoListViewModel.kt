@@ -34,7 +34,11 @@ class ToDoListViewModel(private val userCase: GetToDoUserCase) : BaseViewModel()
 
     fun finishToDo(id: Int) {
         coroutineScopeLaunchLoading {
-            userCase.finish(id)
+            userCase.finish(id).onSuccess {
+                loadToDoList()
+            }.onFailure {
+                it.throwable.alertError()
+            }
         }
     }
 }

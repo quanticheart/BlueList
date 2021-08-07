@@ -4,7 +4,7 @@ import com.quanticheart.bluelist.R
 import com.quanticheart.bluelist.databinding.FragmentToDoListBinding
 import com.quanticheart.bluelist.view.fragment.list.adapter.ToDoAdapter
 import com.quanticheart.bluelist.view.fragment.list.dialog.addToDo
-import com.quanticheart.core.base.dialog.extentions.dialogAction
+import com.quanticheart.core.base.dialog.extentions.dialogAlert
 import com.quanticheart.core.base.fragment.BaseFragment
 import com.quanticheart.core.extentions.commons.view.getColor
 import com.quanticheart.core.extentions.commons.view.setSafeOnClickListener
@@ -43,6 +43,10 @@ class ToDoListFragment :
                 loading(it)
             }
 
+            throwable.observerNotNull(this@ToDoListFragment) {
+                dialogAlert("Tivemos um problema", it.message, "OK")
+            }
+
             list.observeListNotEmpty(this@ToDoListFragment) {
                 it.let(adapter::submitList)
             }
@@ -54,5 +58,6 @@ class ToDoListFragment :
 
     override fun itemSelectedListener(item: ToDoSimple) {
         super.itemSelectedListener(item)
+        viewModel?.finishToDo(item.id)
     }
 }

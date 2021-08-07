@@ -3,6 +3,7 @@ package com.quanticheart.core.base.dialog.extentions
 import android.content.Context
 import android.text.Spanned
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.quanticheart.core.R
 import com.quanticheart.core.base.dialog.BaseFragmentDialog
 import com.quanticheart.core.databinding.DialogActionsBinding
@@ -13,6 +14,34 @@ fun Context?.dialogAction(
     msg: String?,
     acceptLabel: String,
     acceptListener: () -> Unit
+) {
+    this?.let {
+        DialogDefaultAction(
+            it,
+            title,
+            msg.toSpannedText(),
+            resources.getString(R.string.label_cancel),
+            null,
+            acceptLabel,
+            acceptListener
+        )
+    }
+}
+
+fun Fragment?.dialogAlert(
+    title: String?,
+    msg: String?,
+    acceptLabel: String,
+    acceptListener: (() -> Unit)? = null
+) {
+    this?.context?.dialogAlert(title, msg, acceptLabel, acceptListener)
+}
+
+fun Context?.dialogAlert(
+    title: String?,
+    msg: String?,
+    acceptLabel: String,
+    acceptListener: (() -> Unit)? = null
 ) {
     this?.let {
         DialogDefaultAction(
