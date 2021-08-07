@@ -14,14 +14,15 @@ data class ToDoEntity(
     var _id: Int = 0,
     val date: Long = Date().time,
     val title: String,
-    val description: String,
+    val description: String?,
     val priority: Int,
     val alarm: Long? = null,
-    val check: Boolean = false
+    var check: Boolean = false,
+    var finish: Long? = null,
 ) : DomainMapperWithList<ToDo, ToDoSimple> {
     override fun mapToDomainModel() =
         ToDo(_id, Date(date), title, description, priority, alarm?.let { Date(it) }, check)
 
     override fun mapToDomainListModel() =
-        ToDoSimple(_id, Date(date), priority, alarm?.let { Date(it) }, title, check, false)
+        ToDoSimple(_id, Date(date), priority, alarm?.let { Date(it) }, title, check, check)
 }

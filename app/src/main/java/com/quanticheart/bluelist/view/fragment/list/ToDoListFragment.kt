@@ -22,7 +22,7 @@ class ToDoListFragment :
     override fun onFinishBindingView(binding: FragmentToDoListBinding) {
         binding.viewModel = viewModel
         binding.adapter = adapter
-        binding.addMoreAmiibo.setSafeOnClickListener {
+        binding.addMoreToDo.setSafeOnClickListener {
             addToDo {
                 viewModel?.addToDo(it)
             }

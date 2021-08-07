@@ -73,7 +73,8 @@
                 android:layout_marginEnd="@dimen/default_margin"
                 android:background="@drawable/selector_check_box"
                 android:button="@null"
-                android:checked="@{todo.finish}" />
+                android:checked="@{todo.finish}"
+                android:enabled="false" />
 
             <View
                 android:id="@+id/btnFinishToDo"
@@ -82,7 +83,8 @@
                 android:layout_alignStart="@+id/checkbox"
                 android:layout_alignTop="@+id/checkbox"
                 android:layout_alignEnd="@+id/checkbox"
-                android:layout_alignBottom="@+id/checkbox" />
+                android:layout_alignBottom="@+id/checkbox"
+                android:background="?attr/selectableItemBackgroundBorderless" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

@@ -31,6 +31,7 @@ abstract class BaseBottonSheetFragmentDialog<T : ViewDataBinding>(
 
     override fun onHide() {
         this.javaClass.simpleName.logI(DialogConstants.TAG_DIALOG_HIDE)
+        dismiss()
     }
 
     init {

@@ -7,7 +7,6 @@ import com.quanticheart.data.database.model.ToDoEntity
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQueryDeleteTableByID
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQuerySelectAll
 import com.quanticheart.data.database.utils.FunctionsCoroutine.getQuerySelectByID
-import com.quanticheart.data.extention.toSuccessResult
 import com.quanticheart.data.extention.tryCatchResult
 import com.quanticheart.domain.model.ToDo
 import com.quanticheart.domain.model.ToDoInsert
@@ -30,7 +29,8 @@ class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
         return coroutineIO {
             tryCatchResult("Erro ao tentar carregar lista") {
                 val q = getQuerySelectAll<ToDoEntity>()
-                database.selectAll(q).map { it.mapToDomainListModel() }.sortedBy { it.date }
+                database.selectAll(q).map { it.mapToDomainListModel() }
+                    .sortedByDescending { it.date }
             }
         }
     }
@@ -51,9 +51,9 @@ class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
                     ToDoEntity(
                         date = Date().time,
                         title = toDo.title,
-                        description = "TESTES",
-                        priority = 3,
-                        alarm = Date().time,
+                        description = toDo.description,
+                        priority = toDo.priority,
+                        alarm = toDo.alarm?.time,
                         check = false
                     )
                 ) > 0
@@ -62,6 +62,15 @@ class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
     }
 
     override suspend fun finish(id: Int): ResultRepository<Boolean> {
-        return true.toSuccessResult()
+        return coroutineIO {
+            tryCatchResult("Erro ao tentar finalizar tarefa") {
+                val q = getQuerySelectByID<ToDoEntity>(id.toString())
+                val toDo = database.selectByID(q)
+                toDo.check = true
+                toDo.finish = Date().time
+
+                database.update(toDo) > 0
+            }
+        }
     }
 }

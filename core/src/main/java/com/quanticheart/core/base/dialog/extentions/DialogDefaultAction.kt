@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.quanticheart.core.R
 import com.quanticheart.core.base.dialog.BaseFragmentDialog
 import com.quanticheart.core.databinding.DialogActionsBinding
+import com.quanticheart.core.extentions.commons.view.hide
 import com.quanticheart.core.extentions.vars.toSpannedText
 
 fun Context?.dialogAction(
@@ -20,10 +21,11 @@ fun Context?.dialogAction(
             it,
             title,
             msg.toSpannedText(),
+            acceptLabel,
+            acceptListener,
             resources.getString(R.string.label_cancel),
             null,
-            acceptLabel,
-            acceptListener
+            true
         )
     }
 }
@@ -48,10 +50,11 @@ fun Context?.dialogAlert(
             it,
             title,
             msg.toSpannedText(),
+            acceptLabel,
+            acceptListener,
             resources.getString(R.string.label_cancel),
             null,
-            acceptLabel,
-            acceptListener
+            false
         )
     }
 }
@@ -60,16 +63,16 @@ class DialogDefaultAction(
     context: Context,
     private val title: String?,
     private val msg: Spanned?,
+    private val labelAccept: String?,
+    private val acceptListener: (() -> Unit)?,
     private val labelCancel: String?,
     private val cancelListener: ((dialog: DialogDefaultAction) -> Unit)?,
-    private val labelAccept: String?,
-    private val acceptListener: (() -> Unit)?
+    private val showCancelButton: Boolean = true
 ) : BaseFragmentDialog<DialogActionsBinding>(context, R.layout.dialog_actions) {
 
     override fun onViewFinishCreate(binding: DialogActionsBinding) {
-
         /**
-         * Msgs
+         * Msg
          */
         binding.dialogTitle.apply {
             visibility = title?.let {
@@ -88,18 +91,23 @@ class DialogDefaultAction(
         /**
          * Actions
          */
-        binding.btnCancel.apply {
-            visibility = labelCancel?.let {
-                text = it
-                setOnClickListener {
-                    cancelListener?.let { it1 -> it1(this@DialogDefaultAction) }
-                    safeHide()
+        if (showCancelButton) {
+            binding.btnCancel.apply {
+                visibility = labelCancel?.let {
+                    text = it
+                    setOnClickListener {
+                        cancelListener?.let { it1 -> it1(this@DialogDefaultAction) }
+                        safeHide()
+                    }
+                    View.VISIBLE
+                } ?: run {
+                    binding.spaceX.visibility = View.GONE
+                    View.GONE
                 }
-                View.VISIBLE
-            } ?: run {
-                binding.spaceX.visibility = View.GONE
-                View.GONE
             }
+        } else {
+            binding.spaceX.hide()
+            binding.btnCancel.hide()
         }
 
         binding.btnOK.apply {

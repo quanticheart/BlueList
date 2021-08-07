@@ -18,6 +18,7 @@ class ToDoListViewModel(private val userCase: GetToDoUserCase) : BaseViewModel()
 
     fun loadToDoList() {
         coroutineScopeLaunchLoading {
+            list.value = null
             userCase.getList().onSuccess {
                 list.value = it
             }.onFailure {
@@ -28,7 +29,11 @@ class ToDoListViewModel(private val userCase: GetToDoUserCase) : BaseViewModel()
 
     fun addToDo(toDo: ToDoInsert) {
         coroutineScopeLaunchLoading {
-            userCase.insert(toDo)
+            userCase.insert(toDo).onSuccess {
+                loadToDoList()
+            }.onFailure {
+                it.throwable.alertError()
+            }
         }
     }
 

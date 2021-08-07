@@ -86,7 +86,7 @@ interface BaseDaoCoroutine<T> {
      * @param obj the object to be updated
      */
     @Update
-    suspend fun update(obj: T)
+    suspend fun update(obj: T): Int
 
     /**
      * Delete an object from the database
@@ -94,7 +94,7 @@ interface BaseDaoCoroutine<T> {
      * @param obj the object to be deleted
      */
     @Delete
-    suspend fun delete(obj: T)
+    suspend fun delete(obj: T) : Int
 
     @RawQuery
     suspend fun deleteAll(query: SupportSQLiteQuery): LongArray

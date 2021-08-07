@@ -35,7 +35,7 @@
                 tools:listitem="@layout/to_do_item" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addMoreAmiibo"
+                android:id="@+id/addMoreToDo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
