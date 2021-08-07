@@ -29,7 +29,7 @@ class ToDoRepositoryImpl(private val database: ToDoDao) : ToDoRepository {
         return coroutineIO {
             tryCatchResult("Erro ao tentar carregar lista") {
                 val q = getQuerySelectAll<ToDoEntity>()
-                database.selectAll(q).map { it.mapToDomainListModel() }
+                database.selectAll(q).map { it.mapToDomainListModel() }.sortedBy { it.date }
             }
         }
     }
