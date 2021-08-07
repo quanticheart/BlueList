@@ -14,4 +14,5 @@
     <string name="label_title_finish_to_do">Finalizar Tarefa?</string>
     <string name="label_finish">Finalizar</string>
     <string name="label_sub_msg_finish_to_do"><![CDATA[ Deseja finalizar a tarefa <b>%1$s</b> agora? ]]></string>
+    <string name="label_msg_add_to_do">Clique em +1 para adicionar uma nova tarefa</string>
 </resources>

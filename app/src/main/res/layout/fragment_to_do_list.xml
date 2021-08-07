@@ -14,6 +14,7 @@
             type="com.quanticheart.bluelist.view.fragment.list.ToDoListViewModel" />
     </data>
 
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
@@ -24,15 +25,31 @@
             android:layout_height="match_parent"
             tools:context=".view.MainActivity">
 
-            <androidx.recyclerview.widget.RecyclerView
-                style="@style/default_list_style"
+            <ViewFlipper
+                android:id="@+id/flipperList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="45dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:setAdapter="@{adapter}"
-                tools:context=".view.MainActivity"
-                tools:listitem="@layout/to_do_item" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="100dp"
+                    android:gravity="center"
+                    android:text="@string/label_msg_add_to_do"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    style="@style/default_list_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="45dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:setAdapter="@{adapter}"
+                    tools:context=".view.MainActivity"
+                    tools:listitem="@layout/to_do_item" />
+            </ViewFlipper>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/addMoreToDo"

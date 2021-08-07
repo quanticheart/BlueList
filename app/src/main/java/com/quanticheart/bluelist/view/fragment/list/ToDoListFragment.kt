@@ -49,6 +49,7 @@ class ToDoListFragment :
 
             list.observeListNotEmpty(this@ToDoListFragment) {
                 it.let(adapter::submitList)
+                binding.flipperList.displayedChild = 1
             }
         }
     }
