@@ -2,6 +2,7 @@ package com.quanticheart.bluelist.view.fragment.list.adapter
 
 import com.quanticheart.bluelist.R
 import com.quanticheart.bluelist.databinding.ToDoItemBinding
+import com.quanticheart.core.base.dialog.extentions.dialogAction
 import com.quanticheart.core.extentions.commons.view.setSafeOnClickListener
 import com.quanticheart.core.generics.recyclerView.BindingListAdapter
 import com.quanticheart.core.generics.recyclerView.ListClickListener
@@ -16,8 +17,14 @@ class ToDoAdapter(private val click: ListClickListener<ToDoSimple>) :
         binding.root.setSafeOnClickListener {
             click.itemClickListener(item)
         }
-        binding.checkbox.setSafeOnClickListener {
-            click.itemSelectedListener(item)
+        binding.btnFinishToDo.setSafeOnClickListener {
+            it.context.dialogAction(
+                it.context.resources.getString(R.string.label_title_finish_to_do),
+                it.context.resources.getString(R.string.label_sub_msg_finish_to_do, item.title),
+                it.context.resources.getString(R.string.label_finish)
+            ) {
+                click.itemSelectedListener(item)
+            }
         }
     }
 }

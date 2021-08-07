@@ -13,5 +13,5 @@
     <string name="msg_warning_to_do_write_all_fields">Digite todos os campos</string>
     <string name="label_title_finish_to_do">Finalizar Tarefa?</string>
     <string name="label_finish">Finalizar</string>
-    <string name="label_sub_msg_finish_to_do">Deseja finalizar a tarefa <b>%1s</b> agora?</string>
+    <string name="label_sub_msg_finish_to_do"><![CDATA[ Deseja finalizar a tarefa <b>%1$s</b> agora? ]]></string>
 </resources>

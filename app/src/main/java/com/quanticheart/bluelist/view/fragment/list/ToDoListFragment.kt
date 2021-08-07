@@ -54,12 +54,5 @@ class ToDoListFragment :
 
     override fun itemSelectedListener(item: ToDoSimple) {
         super.itemSelectedListener(item)
-        dialogAction(
-            getString(R.string.label_title_finish_to_do),
-            getString(R.string.label_sub_msg_finish_to_do, item.title),
-            getString(R.string.label_finish)
-        ) {
-            viewModel?.finishToDo(item.id)
-        }
     }
 }

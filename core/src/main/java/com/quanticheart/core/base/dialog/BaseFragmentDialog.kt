@@ -1,7 +1,7 @@
 package com.quanticheart.core.base.dialog
 
-import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.InsetDrawable
@@ -15,11 +15,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.DialogFragment
 import com.quanticheart.core.base.dialog.constants.DialogConstants
+import com.quanticheart.core.extentions.system.logE
 import com.quanticheart.core.extentions.system.logI
 import com.quanticheart.core.extentions.vars.toDp
 
 abstract class BaseFragmentDialog<T : ViewDataBinding>(
-    private val activity: Activity,
+    private val mContext: Context,
     @LayoutRes private val resLayout: Int
 ) : DialogFragment(), OnDialogActions<T> {
 
@@ -90,11 +91,10 @@ abstract class BaseFragmentDialog<T : ViewDataBinding>(
 
     private fun safeShow() {
         try {
-            (activity as AppCompatActivity?)?.supportFragmentManager?.let {
-                show(
-                    it,
-                    activity.javaClass.name
-                )
+            (mContext as AppCompatActivity?)?.supportFragmentManager?.let {
+                show(it, mContext.javaClass.name)
+            } ?: run {
+                "mContext is null".logE()
             }
         } catch (e: Exception) {
             e.printStackTrace()

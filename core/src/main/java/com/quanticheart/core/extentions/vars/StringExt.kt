@@ -2,6 +2,9 @@
 
 package com.quanticheart.core.extentions.vars
 
+import android.os.Build
+import android.text.Html
+import android.text.Spanned
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,4 +29,13 @@ fun String.toDateLabel(
 fun Date.toDateLabel(patternTo: String = PATTERN_DATE_FORMAT): String? {
     val to = SimpleDateFormat(patternTo, Locale.getDefault())
     return to.format(this)
+}
+
+@Suppress("DEPRECATION")
+fun String?.toSpannedText(): Spanned? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        Html.fromHtml(this, Html.FROM_HTML_MODE_COMPACT)
+    } else {
+        Html.fromHtml(this)
+    }
 }

@@ -20,7 +20,7 @@
             android:padding="@dimen/default_margin">
 
             <ImageView
-                android:layout_width="50dp"
+                android:layout_width="30dp"
                 android:layout_height="5dp"
                 android:layout_gravity="center"
                 android:background="@drawable/bottomsheet_slider_indicator"

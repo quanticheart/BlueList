@@ -1,23 +1,24 @@
 package com.quanticheart.core.base.dialog.extentions
 
-import android.app.Activity
+import android.content.Context
+import android.text.Spanned
 import android.view.View
-import androidx.fragment.app.Fragment
 import com.quanticheart.core.R
 import com.quanticheart.core.base.dialog.BaseFragmentDialog
 import com.quanticheart.core.databinding.DialogActionsBinding
+import com.quanticheart.core.extentions.vars.toSpannedText
 
-fun Fragment.dialogAction(
+fun Context?.dialogAction(
     title: String?,
-    msg: String,
+    msg: String?,
     acceptLabel: String,
     acceptListener: () -> Unit
 ) {
-    activity?.let {
+    this?.let {
         DialogDefaultAction(
             it,
             title,
-            msg,
+            msg.toSpannedText(),
             resources.getString(R.string.label_cancel),
             null,
             acceptLabel,
@@ -27,14 +28,14 @@ fun Fragment.dialogAction(
 }
 
 class DialogDefaultAction(
-    activity: Activity,
+    context: Context,
     private val title: String?,
-    private val msg: String?,
+    private val msg: Spanned?,
     private val labelCancel: String?,
     private val cancelListener: ((dialog: DialogDefaultAction) -> Unit)?,
     private val labelAccept: String?,
     private val acceptListener: (() -> Unit)?
-) : BaseFragmentDialog<DialogActionsBinding>(activity, R.layout.dialog_actions) {
+) : BaseFragmentDialog<DialogActionsBinding>(context, R.layout.dialog_actions) {
 
     override fun onViewFinishCreate(binding: DialogActionsBinding) {
 
