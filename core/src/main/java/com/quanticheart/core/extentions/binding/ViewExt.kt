@@ -29,11 +29,11 @@ fun TextView.priorityText(priority: Int) {
     text = textPriority
 }
 
-@BindingAdapter(value = ["visibility"])
-fun TextView.visibility(obj: Any?) {
-    visibility = obj?.let {
-        View.VISIBLE
-    } ?: View.GONE
+@BindingAdapter(value = ["visibilityNotNull"])
+fun View.visibilityNotNull(obj: Any?) {
+    post {
+        visibility = if (obj != null) View.VISIBLE else View.GONE
+    }
 }
 
 @BindingAdapter(value = ["toDoDate"])

@@ -55,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/view1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:visibility="@{viewModel.details.alarm }" />
+            app:visibilityNotNull="@{viewModel.details.alarm}" />
 
         <TextView
             android:id="@+id/dateAlarm"
@@ -71,7 +71,7 @@
             app:layout_constraintStart_toEndOf="@+id/view2"
             app:layout_constraintTop_toTopOf="@+id/view2"
             app:toDoDate="@{viewModel.details.alarm}"
-            app:visibility="@{viewModel.details.alarm }"
+            app:visibilityNotNull="@{viewModel.details.alarm}"
             tools:text="2021/08/07" />
 
         <androidx.cardview.widget.CardView
