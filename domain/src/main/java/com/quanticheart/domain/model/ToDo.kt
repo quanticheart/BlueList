@@ -5,9 +5,10 @@ import java.util.*
 data class ToDo(
     val id: Int,
     val date: Date,
-    val title: String,
-    val description: String?,
     val priority: Int,
     val alarm: Date?,
-    val check: Boolean
+    val title: String,
+    val check: Boolean,
+    val finish: Boolean,
+    val description: String?
 )

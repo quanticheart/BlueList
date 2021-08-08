@@ -15,4 +15,7 @@
     <string name="label_finish">Finalizar</string>
     <string name="label_sub_msg_finish_to_do"><![CDATA[ Deseja finalizar a tarefa <b>%1$s</b> agora? ]]></string>
     <string name="label_msg_add_to_do">Clique em +1 para adicionar uma nova tarefa</string>
+    <string name="msg_to_do_error_load_details">Erro ao carregar dados da tarefa</string>
+    <string name="label_to_do_create_at">Criado em:</string>
+    <string name="label_to_do_alarm">Alarme para:</string>
 </resources>

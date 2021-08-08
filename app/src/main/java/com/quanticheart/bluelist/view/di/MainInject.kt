@@ -8,5 +8,5 @@ import org.koin.dsl.module
 val appModule = module {
 
     viewModel { ToDoListViewModel(get()) }
-    viewModel { ToDoDetailsViewModel() }
+    viewModel { ToDoDetailsViewModel(get()) }
 }

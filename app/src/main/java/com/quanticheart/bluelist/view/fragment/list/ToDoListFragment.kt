@@ -1,7 +1,10 @@
 package com.quanticheart.bluelist.view.fragment.list
 
+import android.os.Bundle
+import androidx.navigation.fragment.findNavController
 import com.quanticheart.bluelist.R
 import com.quanticheart.bluelist.databinding.FragmentToDoListBinding
+import com.quanticheart.bluelist.view.fragment.constants.ToDoConstants
 import com.quanticheart.bluelist.view.fragment.list.adapter.ToDoAdapter
 import com.quanticheart.bluelist.view.fragment.list.dialog.addToDo
 import com.quanticheart.core.base.dialog.extentions.dialogAlert
@@ -51,14 +54,20 @@ class ToDoListFragment :
                 it.let(adapter::submitList)
                 binding.flipperList.displayedChild = 1
             }
+
+            loadToDoList()
         }
     }
 
     override fun itemClickListener(item: ToDoSimple) {
+        findNavController().navigate(R.id.toDoDetailsFragment, Bundle().apply {
+            putInt(ToDoConstants.KEY_TO_DO_ID, item.id)
+        })
     }
 
     override fun itemSelectedListener(item: ToDoSimple) {
         super.itemSelectedListener(item)
         viewModel?.finishToDo(item.id)
     }
+
 }

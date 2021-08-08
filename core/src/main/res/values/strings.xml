@@ -4,4 +4,7 @@
 
     <string name="label_cancel">Cancelar</string>
     <string name="label_yes">sim</string>
+    <string name="label_low_priority">Baixa prioridade</string>
+    <string name="label_media_priority">Média prioridade</string>
+    <string name="label_high_priority">Alta prioridade</string>
 </resources>

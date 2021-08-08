@@ -18,7 +18,25 @@ fun View.priorityColor(priority: Int) {
     setBackgroundColor(context.resources.getColor(color, null))
 }
 
+@BindingAdapter(value = ["priorityText"])
+fun TextView.priorityText(priority: Int) {
+    val textPriority = when (priority) {
+        1 -> context.getString(R.string.label_low_priority)
+        2 -> context.getString(R.string.label_media_priority)
+        3 -> context.getString(R.string.label_high_priority)
+        else -> context.getString(R.string.label_low_priority)
+    }
+    text = textPriority
+}
+
+@BindingAdapter(value = ["visibility"])
+fun TextView.visibility(obj: Any?) {
+    visibility = obj?.let {
+        View.VISIBLE
+    } ?: View.GONE
+}
+
 @BindingAdapter(value = ["toDoDate"])
-fun TextView.toDoDate(date: Date) {
-    text = date.toDateLabel()
+fun TextView.toDoDate(date: Date?) {
+    text = date?.toDateLabel()
 }

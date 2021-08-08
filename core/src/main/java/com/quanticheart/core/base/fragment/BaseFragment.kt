@@ -21,16 +21,12 @@ abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBin
 
     protected val viewModel: viewModel? by viewModel(getClassByT())
 
-    protected val binding: dataBinding by
-    lazy {
-        DataBindingUtil.inflate(
-            layoutInflater, resLayout, null, false
-        )
-    }
+    protected lateinit var binding: dataBinding
 
     private lateinit var baseBinding: FragmentBaseBinding
 
     abstract fun onFinishBindingView(binding: dataBinding)
+
     abstract fun onFinishLoadViewModel(viewModel: viewModel)
 
     /**
@@ -42,10 +38,13 @@ abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBin
         savedInstanceState: Bundle?
     ): View? {
         baseBinding = FragmentBaseBinding.inflate(inflater, container, false)
+        binding = DataBindingUtil.inflate(layoutInflater, resLayout, null, false)
         binding.apply {
             lifecycleOwner = this@BaseFragment
         }
-        baseBinding.containerBaseFragment.addView(binding.root)
+        baseBinding.containerBaseFragment.apply {
+            addView(binding.root)
+        }
         return baseBinding.root
     }
 
