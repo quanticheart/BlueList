@@ -136,7 +136,7 @@ private fun Context.createNotificationManager(
         notificationChannel.group = createNewGroupNotification(this, channelName)
         notificationChannel.vibrationPattern =
             longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
-        
+
         notificationManager.createNotificationChannel(notificationChannel)
     }
     return notificationManager
