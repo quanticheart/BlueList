@@ -18,4 +18,8 @@
     <string name="msg_to_do_error_load_details">Erro ao carregar dados da tarefa</string>
     <string name="label_to_do_create_at">Criado em:</string>
     <string name="label_to_do_alarm">Alarme para:</string>
+    <string name="label_toolbar_details">Detalhes</string>
+    <string name="msg_not_have_description">Sem descrição</string>
+    <string name="channel_name">Tarefas</string>
+    <string name="channel_description">Notificações das suas tarefas</string>
 </resources>

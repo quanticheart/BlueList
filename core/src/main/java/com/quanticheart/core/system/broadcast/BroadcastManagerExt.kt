@@ -1,4 +1,4 @@
-package com.quanticheart.core.extentions.system
+package com.quanticheart.core.system.broadcast
 
 import android.app.Activity
 import android.content.BroadcastReceiver

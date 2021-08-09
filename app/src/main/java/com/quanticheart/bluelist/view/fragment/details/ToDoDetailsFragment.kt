@@ -15,6 +15,9 @@ class ToDoDetailsFragment :
     BaseFragment<ToDoDetailsViewModel, FragmentToDoDetailsBinding>(R.layout.fragment_to_do_details) {
 
     override fun onFinishBindingView(binding: FragmentToDoDetailsBinding) {
+        backToolbar(getString(R.string.label_toolbar_details)) {
+            backList()
+        }
         binding.viewModel = viewModel
     }
 
@@ -59,6 +62,10 @@ class ToDoDetailsFragment :
     }
 
     private fun backList() {
-        findNavController().navigate(R.id.toDoListFragment)
+        try {
+            findNavController().navigate(R.id.toDoListFragment)
+        } catch (e: Exception) {
+            finish()
+        }
     }
 }

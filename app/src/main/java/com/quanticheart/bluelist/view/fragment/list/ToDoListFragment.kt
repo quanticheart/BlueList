@@ -54,8 +54,6 @@ class ToDoListFragment :
                 it.let(adapter::submitList)
                 binding.flipperList.displayedChild = 1
             }
-
-            loadToDoList()
         }
     }
 
@@ -69,5 +67,4 @@ class ToDoListFragment :
         super.itemSelectedListener(item)
         viewModel?.finishToDo(item.id)
     }
-
 }

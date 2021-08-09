@@ -12,6 +12,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.quanticheart.core.base.viewModel.BaseViewModel
 import com.quanticheart.core.databinding.FragmentBaseBinding
+import com.quanticheart.core.extentions.commons.view.createBackToolbar
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
@@ -48,6 +49,16 @@ abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBin
         return baseBinding.root
     }
 
+    protected fun backToolbar(title: String? = null, listener: View.OnClickListener? = null) {
+        this@BaseFragment.activity?.let {
+            baseBinding.toolbarDefaultFragment.createBackToolbar(
+                it,
+                title,
+                listener
+            )
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onFinishBindingView(binding)
@@ -57,6 +68,8 @@ abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBin
     fun loading(status: Boolean) {
         baseBinding.flipperLoading.displayedChild = if (status) 1 else 0
     }
+
+    fun finish() = activity?.finish()
 
     @Suppress("UNCHECKED_CAST")
     private fun getClassByT(): KClass<viewModel> =

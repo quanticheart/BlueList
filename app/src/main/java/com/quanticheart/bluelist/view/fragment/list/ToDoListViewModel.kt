@@ -12,6 +12,10 @@ class ToDoListViewModel(private val userCase: GetToDoUserCase) : BaseViewModel()
 
     val list = ListLiveData<ToDoSimple>()
 
+    init {
+        loadToDoList()
+    }
+
     fun loadToDoList() {
         coroutineScopeLaunchLoading {
             list.value = null
