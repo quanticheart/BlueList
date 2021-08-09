@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.quanticheart.core.base.viewModel.BaseViewModel
 import com.quanticheart.core.databinding.FragmentBaseBinding
 import com.quanticheart.core.extentions.commons.view.createBackToolbar
+import com.quanticheart.core.system.broadcast.destroyBroadcastManager
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.lang.reflect.ParameterizedType
 import kotlin.reflect.KClass
@@ -74,4 +75,9 @@ abstract class BaseFragment<viewModel : BaseViewModel, dataBinding : ViewDataBin
     @Suppress("UNCHECKED_CAST")
     private fun getClassByT(): KClass<viewModel> =
         ((javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<viewModel>).kotlin
+
+    override fun onDestroy() {
+        super.onDestroy()
+        destroyBroadcastManager()
+    }
 }

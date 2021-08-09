@@ -10,6 +10,7 @@ import com.quanticheart.core.base.fragment.BaseFragment
 import com.quanticheart.core.extentions.commons.view.setSafeOnClickListener
 import com.quanticheart.core.extentions.system.observerNotNull
 import com.quanticheart.core.extentions.system.toast
+import com.quanticheart.core.system.broadcast.sendBroadcastAction
 
 class ToDoDetailsFragment :
     BaseFragment<ToDoDetailsViewModel, FragmentToDoDetailsBinding>(R.layout.fragment_to_do_details) {
@@ -50,6 +51,10 @@ class ToDoDetailsFragment :
                 else
                     binding.btnFinishToDo.setOnClickListener(null)
 
+            }
+
+            finishTodo.observe(this@ToDoDetailsFragment) {
+                sendBroadcastAction(ToDoConstants.KEY_TO_DO_RELOAD)
             }
         }
 

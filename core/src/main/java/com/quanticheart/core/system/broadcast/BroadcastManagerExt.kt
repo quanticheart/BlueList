@@ -1,25 +1,25 @@
 package com.quanticheart.core.system.broadcast
 
-import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 private var broadcastManager: LocalBroadcastManager? = null
 private var reloadReceiver: BroadcastReceiver? = null
 
 @Suppress("unused")
-fun Activity.destroyBroadcastManager() {
+fun Fragment.destroyBroadcastManager() {
     reloadReceiver?.let {
         broadcastManager?.unregisterReceiver(it)
         reloadReceiver = null
     }
 }
 
-fun Activity.createBroadcastManager(vararg actions: String, callback: (action: String) -> Unit) {
+fun Fragment.createBroadcastManager(vararg actions: String, callback: (action: String) -> Unit) {
     val filter = IntentFilter().apply {
         actions.forEach {
             addAction(it)
@@ -32,13 +32,15 @@ fun Activity.createBroadcastManager(vararg actions: String, callback: (action: S
         }
     }
 
-    LocalBroadcastManager.getInstance(this).apply {
+    context?.let {
+        LocalBroadcastManager.getInstance(it).apply {
         broadcastManager = this
         reloadReceiver?.let { this.registerReceiver(it, filter) }
     }
+    }
 }
 
-fun Activity.sendBroadcastAction(action: String, extras: Bundle? = null) {
+fun Fragment.sendBroadcastAction(action: String, extras: Bundle? = null) {
     val intent = Intent(action).apply { extras?.let { putExtras(it) } }
-    LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
+    context?.let { LocalBroadcastManager.getInstance(it).sendBroadcast(intent) }
 }

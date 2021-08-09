@@ -10,6 +10,7 @@ import com.quanticheart.domain.result.onSuccess
 class ToDoDetailsViewModel(private val userCase: GetToDoUserCase) : BaseViewModel() {
 
     val details = MutableLiveData<ToDo>()
+    val finishTodo = MutableLiveData<Boolean>()
 
     fun loadDetails(id: Int) {
         coroutineScopeLaunchLoading {
@@ -26,6 +27,7 @@ class ToDoDetailsViewModel(private val userCase: GetToDoUserCase) : BaseViewMode
         coroutineScopeLaunchLoading {
             userCase.finish(id).onSuccess {
                 loadDetails(id)
+                finishTodo.value = true
             }.onFailure {
                 it.throwable.alertError()
             }

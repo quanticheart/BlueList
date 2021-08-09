@@ -14,6 +14,7 @@ import com.quanticheart.core.extentions.commons.view.setSafeOnClickListener
 import com.quanticheart.core.extentions.system.observeListNotEmpty
 import com.quanticheart.core.extentions.system.observerNotNull
 import com.quanticheart.core.generics.recyclerView.ListClickListener
+import com.quanticheart.core.system.broadcast.createBroadcastManager
 import com.quanticheart.domain.model.ToDoSimple
 
 class ToDoListFragment :
@@ -66,5 +67,14 @@ class ToDoListFragment :
     override fun itemSelectedListener(item: ToDoSimple) {
         super.itemSelectedListener(item)
         viewModel?.finishToDo(item.id)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        createBroadcastManager(ToDoConstants.KEY_TO_DO_RELOAD) {
+            when (it) {
+                ToDoConstants.KEY_TO_DO_RELOAD -> viewModel?.loadToDoList()
+            }
+        }
     }
 }
