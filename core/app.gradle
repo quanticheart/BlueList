@@ -37,6 +37,7 @@ ext {
             navigation_fragment: "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
             navigation_ui      : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
             glide              : 'com.github.bumptech.glide:glide:4.12.0',
+            lootie             : "com.airbnb.android:lottie:4.0.0"
     ]
     androidxLibs = androidx.values()
 
