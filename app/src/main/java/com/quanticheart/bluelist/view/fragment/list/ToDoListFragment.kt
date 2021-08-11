@@ -1,6 +1,8 @@
 package com.quanticheart.bluelist.view.fragment.list
 
+import android.content.res.Configuration
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import com.quanticheart.bluelist.R
 import com.quanticheart.bluelist.databinding.FragmentToDoListBinding
@@ -33,10 +35,19 @@ class ToDoListFragment :
         }
 
         binding.refresh.apply {
-            setColorSchemeColors(getColor(R.color.purple_500))
+            setColorSchemeColors(getColor(R.color.app_primary))
             setOnRefreshListener {
                 viewModel?.loadToDoList()
                 isRefreshing = false
+            }
+        }
+
+        binding.theme.setSafeOnClickListener {
+            when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+                Configuration.UI_MODE_NIGHT_YES ->
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                Configuration.UI_MODE_NIGHT_NO ->
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }
     }

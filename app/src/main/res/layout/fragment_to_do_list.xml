@@ -18,7 +18,8 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/background">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,7 +29,8 @@
             <ViewFlipper
                 android:id="@+id/flipperList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/background">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,6 +51,7 @@
                     app:setAdapter="@{adapter}"
                     tools:context=".view.MainActivity"
                     tools:listitem="@layout/to_do_item" />
+
             </ViewFlipper>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -59,7 +62,20 @@
                 android:layout_alignParentBottom="true"
                 android:layout_margin="@dimen/default_margin"
                 android:contentDescription="@string/label_add_new_to_do"
-                app:srcCompat="@drawable/ic_baseline_plus_one" />
+                app:srcCompat="@drawable/ic_baseline_plus_one"
+                app:tint="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="84dp"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:contentDescription="@string/label_add_new_to_do"
+                app:srcCompat="@drawable/ic_theme"
+                app:tint="@color/white" />
 
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

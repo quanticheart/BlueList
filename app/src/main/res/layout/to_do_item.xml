@@ -18,7 +18,8 @@
     <androidx.cardview.widget.CardView
         style="@style/default_card_style"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/background_secondary">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -74,7 +75,7 @@
                 android:layout_marginEnd="@dimen/default_margin"
                 android:background="@drawable/selector_check_box"
                 android:button="@null"
-                android:checked="@{todo.finish}"
+                android:checked="true"
                 android:enabled="false" />
 
             <View
@@ -84,8 +85,7 @@
                 android:layout_alignStart="@+id/checkbox"
                 android:layout_alignTop="@+id/checkbox"
                 android:layout_alignEnd="@+id/checkbox"
-                android:layout_alignBottom="@+id/checkbox"
-                android:background="?attr/selectableItemBackgroundBorderless" />
+                android:layout_alignBottom="@+id/checkbox" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

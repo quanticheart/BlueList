@@ -27,7 +27,7 @@ const val channelLightColor = Color.YELLOW
 
 internal object NotificationConfig {
 
-    fun colorNotification(context: Context) = context.getColor(R.color.purple_500)
+    fun colorNotification(context: Context) = context.getColor(R.color.app_primary)
 
     val iconNotification = R.drawable.ic_baseline_arrow_back
 

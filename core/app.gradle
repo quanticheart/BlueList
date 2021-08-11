@@ -11,7 +11,7 @@ ext {
     versions = [
             kotlin    : '1.4.31',
             lifecycle : '2.2.0',
-            navigation: '2.0.0',
+            navigation: '2.3.5',
             koin      : '2.0.1'
     ]
 
