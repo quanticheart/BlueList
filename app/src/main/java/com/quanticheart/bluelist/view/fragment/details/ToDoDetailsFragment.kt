@@ -8,6 +8,7 @@ import com.quanticheart.core.base.dialog.extentions.dialogAction
 import com.quanticheart.core.base.dialog.extentions.dialogAlert
 import com.quanticheart.core.base.fragment.BaseFragment
 import com.quanticheart.core.extentions.commons.view.setSafeOnClickListener
+import com.quanticheart.core.extentions.system.observeIsTrue
 import com.quanticheart.core.extentions.system.observerNotNull
 import com.quanticheart.core.extentions.system.toast
 import com.quanticheart.core.system.broadcast.sendBroadcastAction
@@ -53,7 +54,7 @@ class ToDoDetailsFragment :
 
             }
 
-            finishTodo.observe(this@ToDoDetailsFragment) {
+            finishTodo.observeIsTrue(this@ToDoDetailsFragment) {
                 sendBroadcastAction(ToDoConstants.KEY_TO_DO_RELOAD)
             }
         }

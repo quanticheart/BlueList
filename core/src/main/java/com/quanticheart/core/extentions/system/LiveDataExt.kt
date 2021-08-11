@@ -27,4 +27,17 @@ inline fun <T> LiveData<T>.observerNotNull(
     })
 }
 
+inline fun LiveData<Boolean>.observeIsTrue(
+    lifecycleOwner: LifecycleOwner,
+    crossinline callback: () -> Unit
+) {
+    this.observe(lifecycleOwner, {
+        it?.let {
+            if (it)
+                callback()
+        }
+    })
+}
+
+
 
