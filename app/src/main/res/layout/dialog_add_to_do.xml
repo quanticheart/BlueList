@@ -136,6 +136,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:textColor="@color/text_color"
                     android:id="@+id/cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -148,6 +149,7 @@
                     android:layout_height="0dp" />
 
                 <Button
+                    android:textColor="@color/text_color"
                     android:id="@+id/btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
