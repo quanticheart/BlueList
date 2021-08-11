@@ -1,25 +1,29 @@
 <resources>
     <string name="app_name">BlueList</string>
     <string name="app_name_debug">BlueList Debug</string>
-    <string name="label_add_new_to_do">Adicionar novo a fazer</string>
-    <string name="hint_to_do_title">Titulo da tarefa</string>
-    <string name="label_cancel">Cancelar</string>
-    <string name="label_add">Adicionar</string>
-    <string name="hint_to_do_description">Descreva a tarefa</string>
-    <string name="hint_to_do_priority">Prioridade</string>
-    <string name="hint_to_do_add_alarm">Que Adicionar um Alarme?</string>
-    <string name="hint_to_do_alarm_select_msg">Click para adicionar a data e hora do alarme</string>
-    <string name="msg_warning_to_do_date_alarm">Seleciona uma data e hora para o alarme</string>
-    <string name="msg_warning_to_do_write_all_fields">Digite todos os campos</string>
-    <string name="label_title_finish_to_do">Finalizar Tarefa?</string>
-    <string name="label_finish">Finalizar</string>
-    <string name="label_sub_msg_finish_to_do"><![CDATA[ Deseja finalizar a tarefa <b>%1$s</b> agora? ]]></string>
-    <string name="label_msg_add_to_do">Clique em +1 para adicionar uma nova tarefa</string>
-    <string name="msg_to_do_error_load_details">Erro ao carregar dados da tarefa</string>
-    <string name="label_to_do_create_at">Criado em:</string>
-    <string name="label_to_do_alarm">Alarme para:</string>
-    <string name="label_toolbar_details">Detalhes</string>
-    <string name="msg_not_have_description">Sem descrição</string>
-    <string name="channel_name">Tarefas</string>
-    <string name="channel_description">Notificações das suas tarefas</string>
+
+    <string name="label_add_new_to_do">Add new to do</string>
+    <string name="label_title_finish_to_do">Finish Task?</string>
+    <string name="label_finish">Finish</string>
+    <string name="label_sub_msg_finish_to_do"><![CDATA[ Do you want to finish task <b>%1$s</b> now? ]]></string>
+    <string name="label_msg_add_to_do">Click +1 to add a new task</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_add">Add</string>
+    <string name="label_to_do_create_at">Created in:</string>
+    <string name="label_to_do_alarm">Alarm to:</string>
+    <string name="label_toolbar_details">Details</string>
+
+    <string name="hint_to_do_title">Task Title</string>
+    <string name="hint_to_do_description">Describe the task</string>
+    <string name="hint_to_do_priority">Priority</string>
+    <string name="hint_to_do_add_alarm">What to Add an Alarm?</string>
+    <string name="hint_to_do_alarm_select_msg">Click to add alarm date and time</string>
+
+    <string name="msg_warning_to_do_date_alarm">Select a date and time for the alarm</string>
+    <string name="msg_warning_to_do_write_all_fields">Type all fields</string>
+    <string name="msg_to_do_error_load_details">Error loading task data</string>
+    <string name="msg_not_have_description">No description</string>
+
+    <string name="channel_name">Tasks</string>
+    <string name="channel_description">Your Task Notifications</string>
 </resources>

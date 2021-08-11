@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="label_select_hour">Selecione a hora</string>
-
-    <string name="label_cancel">Cancelar</string>
-    <string name="label_yes">sim</string>
-    <string name="label_low_priority">Baixa prioridade</string>
-    <string name="label_media_priority">Média prioridade</string>
-    <string name="label_high_priority">Alta prioridade</string>
+    <string name="label_select_hour">Select time</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_yes">yes</string>
+    <string name="label_low_priority">Low priority</string>
+    <string name="label_media_priority">Medium Priority</string>
+    <string name="label_high_priority">High priority</string>
 </resources>
