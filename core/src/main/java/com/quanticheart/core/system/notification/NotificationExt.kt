@@ -4,10 +4,15 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Context.NOTIFICATION_SERVICE
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.quanticheart.core.exeptions.sendException
+import com.quanticheart.core.extentions.system.toBroadcastPendingIntent
+import com.quanticheart.core.extentions.system.toPendingIntent
+import com.quanticheart.core.system.notification.config.NOTIFICATION_ID
 import com.quanticheart.core.system.notification.config.NotificationConfig.colorNotification
 import com.quanticheart.core.system.notification.config.NotificationConfig.getBigTextStyle
 import com.quanticheart.core.system.notification.config.NotificationConfig.getImageStyle
@@ -20,11 +25,14 @@ import com.quanticheart.core.system.notification.notificationUtil.NotificationUt
 import com.quanticheart.core.system.notification.notificationUtil.NotificationUtilsOreo.createNewGroupNotification
 import com.quanticheart.core.system.notification.notificationUtil.NotificationUtilsOreo.getBypassDND
 
+
 fun Context.sendNotification(data: NotificationModel) {
+    val id = randomIDNotification()
     try {
         showNotification(
             createNotificationManager(data.channelName, data.channelDescription),
-            createNotificationBuilder(data, null)
+            createNotificationBuilder(data, null, id),
+            id
         )
     } catch (e: Exception) {
         e.sendException("Error on launch notification")
@@ -41,10 +49,12 @@ fun Context.sendNotification(data: NotificationModel) {
  */
 private fun showNotification(
     notificationManager: NotificationManager,
-    notification: Notification
+    notification: Notification,
+    notificationID: Int
 ) {
-    notificationManager.notify(randomIDNotification(), notification)
+    notificationManager.notify(notificationID, notification)
 }
+
 /**
 //
 // ** Create FirebaseNotificationReceiver Builder
@@ -53,7 +63,8 @@ private fun showNotification(
 @Suppress("DEPRECATION")
 private fun Context.createNotificationBuilder(
     data: NotificationModel,
-    image: Bitmap?
+    image: Bitmap?,
+    notificationID: Int
 ): Notification {
     val notificationBuilder: NotificationCompat.Builder =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -70,10 +81,15 @@ private fun Context.createNotificationBuilder(
         .setAutoCancel(true)
         .setWhen(System.currentTimeMillis() + 1000)
         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-        .setContentIntent(data.pendingIntent)
+
+    data.intent?.let {
+        it.putExtra(NOTIFICATION_ID, notificationID)
+        notificationBuilder.setContentIntent(it.toPendingIntent(this))
+    }
 
     data.action?.let {
-        notificationBuilder.addAction(it.img, it.title, it.pendingIntent)
+        it.intent.putExtra(NOTIFICATION_ID, notificationID)
+        notificationBuilder.addAction(it.img, it.title, it.intent.toBroadcastPendingIntent(this))
     }
 
     image?.let {
@@ -101,7 +117,7 @@ private fun Context.createNotificationManager(
 ): NotificationManager {
 
     val notificationManager =
-        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val notificationChannel =
@@ -125,4 +141,17 @@ private fun Context.createNotificationManager(
         notificationManager.createNotificationChannel(notificationChannel)
     }
     return notificationManager
+}
+
+fun Context.notifyCancel(notificationID: Int) {
+    (getSystemService(NOTIFICATION_SERVICE) as NotificationManager?)?.cancel(notificationID)
+    val it = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
+    sendBroadcast(it)
+}
+
+fun Intent.getNotificationID(): Int {
+    return if (hasExtra(NOTIFICATION_ID))
+        getIntExtra(NOTIFICATION_ID, -1)
+    else
+        -1
 }

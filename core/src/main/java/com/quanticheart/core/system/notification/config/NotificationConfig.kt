@@ -19,6 +19,7 @@ import java.util.*
 // ** Utils for Oreo
 //
  */
+const val NOTIFICATION_ID = "notification_id_key"
 const val channelName = "Informações"
 
 const val channelDescription = "Informações sobre o app."

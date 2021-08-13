@@ -39,12 +39,12 @@ class BluListApplication : BaseApplication() {
                 it.forEach { item ->
                     val pendingIntent = Intent(this, ToDoDetailsActivity::class.java).apply {
                         putExtra(ToDoConstants.KEY_TO_DO_ID, item.id)
-                    }.toPendingIntent(this)
+                    }
 
                     val pendingIntentAction =
                         Intent(this, ActionNotificationReceiver::class.java).apply {
                             putExtra(ToDoConstants.KEY_TO_DO_ID, item.id)
-                        }.toBroadcastPendingIntent(this)
+                        }
 
                     val action = NotificationActionModel(
                         this.resources.getString(R.string.label_finish),

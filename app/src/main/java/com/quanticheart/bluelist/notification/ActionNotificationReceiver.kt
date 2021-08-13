@@ -6,6 +6,8 @@ import android.content.Intent
 import com.quanticheart.bluelist.view.fragment.constants.ToDoConstants
 import com.quanticheart.core.extentions.system.coroutineScopeLaunch
 import com.quanticheart.core.system.broadcast.sendBroadcastAction
+import com.quanticheart.core.system.notification.getNotificationID
+import com.quanticheart.core.system.notification.notifyCancel
 import com.quanticheart.domain.interaction.toDo.GetToDoUserCase
 import com.quanticheart.domain.result.onSuccess
 import org.koin.core.KoinComponent
@@ -27,11 +29,12 @@ class MyHelper : KoinComponent {
         if (action != -1) {
             coroutineScopeLaunch {
                 userCase.finish(action).onSuccess {
-                    context.sendBroadcastAction(ToDoConstants.KEY_TO_DO_RELOAD)
+                    context.apply {
+                        sendBroadcastAction(ToDoConstants.KEY_TO_DO_RELOAD)
+                        notifyCancel(intent.getNotificationID())
+                    }
                 }
             }
-            val it = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
-            context.sendBroadcast(it)
         }
     }
 }
