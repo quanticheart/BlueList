@@ -8,5 +8,6 @@ data class NotificationModel(
     var pendingIntent: PendingIntent? = null,
     val deepLink: String? = null,
     var channelName: String,
-    var channelDescription: String
+    var channelDescription: String,
+    var action: NotificationActionModel? = null
 )

@@ -34,13 +34,17 @@ fun Fragment.createBroadcastManager(vararg actions: String, callback: (action: S
 
     context?.let {
         LocalBroadcastManager.getInstance(it).apply {
-        broadcastManager = this
-        reloadReceiver?.let { this.registerReceiver(it, filter) }
-    }
+            broadcastManager = this
+            reloadReceiver?.let { this.registerReceiver(it, filter) }
+        }
     }
 }
 
-fun Fragment.sendBroadcastAction(action: String, extras: Bundle? = null) {
+fun Fragment?.sendBroadcastAction(action: String, extras: Bundle? = null) {
+    this?.context?.sendBroadcastAction(action, extras)
+}
+
+fun Context?.sendBroadcastAction(action: String, extras: Bundle? = null) {
     val intent = Intent(action).apply { extras?.let { putExtras(it) } }
-    context?.let { LocalBroadcastManager.getInstance(it).sendBroadcast(intent) }
+    this?.let { LocalBroadcastManager.getInstance(it).sendBroadcast(intent) }
 }

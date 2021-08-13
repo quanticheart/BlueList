@@ -17,3 +17,9 @@ fun Intent.toPendingIntent(context: Context): PendingIntent {
         PendingIntent.getActivity(context, randomID, intent, PendingIntent.FLAG_ONE_SHOT)
     }
 }
+
+fun Intent.toBroadcastPendingIntent(context: Context): PendingIntent {
+    return this.let { intent ->
+        PendingIntent.getBroadcast(context, randomID, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+}

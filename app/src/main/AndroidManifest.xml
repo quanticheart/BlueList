@@ -13,6 +13,8 @@
         android:theme="@style/Theme.BlueList"
         tools:ignore="AllowBackup">
 
+        <receiver android:name=".notification.ActionNotificationReceiver" />
+
         <activity
             android:name=".view.MainActivity"
             android:screenOrientation="fullSensor">

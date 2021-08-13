@@ -3,7 +3,6 @@ package com.quanticheart.core.system.notification
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
@@ -23,23 +22,13 @@ import com.quanticheart.core.system.notification.notificationUtil.NotificationUt
 
 fun Context.sendNotification(data: NotificationModel) {
     try {
-        createNotification(data, null)
+        showNotification(
+            createNotificationManager(data.channelName, data.channelDescription),
+            createNotificationBuilder(data, null)
+        )
     } catch (e: Exception) {
         e.sendException("Error on launch notification")
     }
-}
-
-private fun Context.createNotification(data: NotificationModel, img: Bitmap?) {
-    showNotification(
-        createNotificationManager(data.channelName, data.channelDescription),
-        createNotificationBuilder(
-            data.pendingIntent,
-            data.title,
-            data.messageBody,
-            data.channelName,
-            img
-        )
-    )
 }
 
 /**
@@ -61,22 +50,14 @@ private fun showNotification(
 // ** Create FirebaseNotificationReceiver Builder
 //
  */
-/**
- * @param Title - title
- * @param messageBody - msg notification
- * @return new notification
- */
 @Suppress("DEPRECATION")
 private fun Context.createNotificationBuilder(
-    pendingIntent: PendingIntent?,
-    Title: String?,
-    messageBody: String?,
-    channelName: String,
-    image: Bitmap? = null
+    data: NotificationModel,
+    image: Bitmap?
 ): Notification {
     val notificationBuilder: NotificationCompat.Builder =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationCompat.Builder(this, "${channelName}_id")
+            NotificationCompat.Builder(this, "${data.channelName}_id")
         } else {
             NotificationCompat.Builder(this).setPriority(priorityNotification)
         }
@@ -84,19 +65,23 @@ private fun Context.createNotificationBuilder(
     notificationBuilder
         .setSmallIcon(iconNotification)
         .setColor(colorNotification(this))
-        .setContentTitle(Title)
-        .setContentText(messageBody)
+        .setContentTitle(data.title)
+        .setContentText(data.messageBody)
         .setAutoCancel(true)
         .setWhen(System.currentTimeMillis() + 1000)
         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-        .setContentIntent(pendingIntent)
+        .setContentIntent(data.pendingIntent)
+
+    data.action?.let {
+        notificationBuilder.addAction(it.img, it.title, it.pendingIntent)
+    }
 
     image?.let {
         notificationBuilder
-            .setStyle(getImageStyle(image, messageBody))
+            .setStyle(getImageStyle(image, data.messageBody))
     } ?: run {
-        if (messageBody?.length ?: 0 > 30)
-            notificationBuilder.setStyle(getBigTextStyle(messageBody))
+        if (data.messageBody?.length ?: 0 > 30)
+            notificationBuilder.setStyle(getBigTextStyle(data.messageBody))
     }
 
     return notificationBuilder.build()

@@ -3,13 +3,16 @@ package com.quanticheart.bluelist.application
 import android.content.Intent
 import com.quanticheart.bluelist.BuildConfig
 import com.quanticheart.bluelist.R
+import com.quanticheart.bluelist.notification.ActionNotificationReceiver
 import com.quanticheart.bluelist.view.di.appModule
 import com.quanticheart.bluelist.view.fragment.constants.ToDoConstants
 import com.quanticheart.bluelist.view.fragment.details.ToDoDetailsActivity
 import com.quanticheart.core.base.application.BaseApplication
 import com.quanticheart.core.exeptions.sendException
 import com.quanticheart.core.extentions.system.coroutineScopeLaunch
+import com.quanticheart.core.extentions.system.toBroadcastPendingIntent
 import com.quanticheart.core.extentions.system.toPendingIntent
+import com.quanticheart.core.system.notification.model.NotificationActionModel
 import com.quanticheart.core.system.notification.model.NotificationModel
 import com.quanticheart.core.system.notification.sendNotification
 import com.quanticheart.data.di.databaseModule
@@ -38,13 +41,25 @@ class BluListApplication : BaseApplication() {
                         putExtra(ToDoConstants.KEY_TO_DO_ID, item.id)
                     }.toPendingIntent(this)
 
+                    val pendingIntentAction =
+                        Intent(this, ActionNotificationReceiver::class.java).apply {
+                            putExtra(ToDoConstants.KEY_TO_DO_ID, item.id)
+                        }.toBroadcastPendingIntent(this)
+
+                    val action = NotificationActionModel(
+                        this.resources.getString(R.string.label_finish),
+                        R.drawable.ic_baseline_arrow_back,
+                        pendingIntentAction
+                    )
+
                     val notification = NotificationModel(
                         item.title,
                         item.description ?: getString(R.string.msg_not_have_description),
                         pendingIntent,
                         null,
                         getString(R.string.channel_name),
-                        getString(R.string.channel_description)
+                        getString(R.string.channel_description),
+                        action
                     )
 
                     this.sendNotification(notification)
