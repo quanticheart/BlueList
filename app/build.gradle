@@ -80,7 +80,7 @@ android {
 
             manifestPlaceholders = [
                     labelName: "@string/app_name_debug",
-                    appIcon  : "@mipmap/ic_launcher"
+                    appIcon  : "@mipmap/ic_launcher_debug"
             ]
 
             signingConfig signingConfigs.debug
