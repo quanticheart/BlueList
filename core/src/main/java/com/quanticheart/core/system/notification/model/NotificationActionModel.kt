@@ -5,5 +5,5 @@ import android.content.Intent
 data class NotificationActionModel(
     val title: String,
     val img: Int,
-    var intent: Intent,
+    var intent: Intent
 )

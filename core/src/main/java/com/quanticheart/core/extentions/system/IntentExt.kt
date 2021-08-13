@@ -1,5 +1,6 @@
 package com.quanticheart.core.extentions.system
 
+/* ktlint-disable no-wildcard-imports */
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent

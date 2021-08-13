@@ -1,7 +1,6 @@
 package com.quanticheart.bluelist.view
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDelegate
 import com.quanticheart.bluelist.R
 import com.quanticheart.core.base.activity.BaseActivity
 

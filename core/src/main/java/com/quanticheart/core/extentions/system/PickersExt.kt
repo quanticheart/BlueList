@@ -1,5 +1,5 @@
 package com.quanticheart.core.extentions.system
-
+/* ktlint-disable no-wildcard-imports */
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
@@ -20,7 +20,6 @@ fun Context.showDatePicker(callback: (date: String) -> Unit) {
             val myFormat = "yyyy/MM/dd"
             val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
             callback(sdf.format(myCalendar.time))
-
         }
 
     DatePickerDialog(

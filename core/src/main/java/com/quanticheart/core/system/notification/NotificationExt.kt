@@ -25,7 +25,6 @@ import com.quanticheart.core.system.notification.notificationUtil.NotificationUt
 import com.quanticheart.core.system.notification.notificationUtil.NotificationUtilsOreo.createNewGroupNotification
 import com.quanticheart.core.system.notification.notificationUtil.NotificationUtilsOreo.getBypassDND
 
-
 fun Context.sendNotification(data: NotificationModel) {
     val id = randomIDNotification()
     try {

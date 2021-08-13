@@ -51,7 +51,6 @@ class ToDoDetailsFragment :
                     }
                 else
                     binding.btnFinishToDo.setOnClickListener(null)
-
             }
 
             finishTodo.observeIsTrue(this@ToDoDetailsFragment) {

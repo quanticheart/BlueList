@@ -18,7 +18,7 @@ data class ToDoEntity(
     val priority: Int,
     val alarm: Long? = null,
     var check: Boolean = false,
-    var finish: Long? = null,
+    var finish: Long? = null
 ) : DomainMapperWithList<ToDo, ToDoSimple> {
     override fun mapToDomainModel() =
         ToDo(_id, Date(date), priority, alarm?.let { Date(it) }, title, check, check, description)

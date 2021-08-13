@@ -38,6 +38,3 @@ inline fun LiveData<Boolean>.observeIsTrue(
         }
     })
 }
-
-
-

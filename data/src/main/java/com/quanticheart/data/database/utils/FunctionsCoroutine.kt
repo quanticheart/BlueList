@@ -2,7 +2,6 @@ package com.quanticheart.data.database.utils
 
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.quanticheart.core.extentions.system.logE
 
 object FunctionsCoroutine {
 

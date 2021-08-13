@@ -1,5 +1,6 @@
 package com.quanticheart.core.extentions.binding
 
+/* ktlint-disable no-wildcard-imports */
 import android.view.View
 import android.widget.TextView
 import androidx.databinding.BindingAdapter

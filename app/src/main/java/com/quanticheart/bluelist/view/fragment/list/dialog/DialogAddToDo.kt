@@ -1,5 +1,6 @@
 package com.quanticheart.bluelist.view.fragment.list.dialog
 
+/* ktlint-disable no-wildcard-imports */
 import android.app.Activity
 import com.quanticheart.bluelist.R
 import com.quanticheart.bluelist.databinding.DialogAddToDoBinding

@@ -10,8 +10,6 @@ import com.quanticheart.bluelist.view.fragment.details.ToDoDetailsActivity
 import com.quanticheart.core.base.application.BaseApplication
 import com.quanticheart.core.exeptions.sendException
 import com.quanticheart.core.extentions.system.coroutineScopeLaunch
-import com.quanticheart.core.extentions.system.toBroadcastPendingIntent
-import com.quanticheart.core.extentions.system.toPendingIntent
 import com.quanticheart.core.system.notification.model.NotificationActionModel
 import com.quanticheart.core.system.notification.model.NotificationModel
 import com.quanticheart.core.system.notification.sendNotification

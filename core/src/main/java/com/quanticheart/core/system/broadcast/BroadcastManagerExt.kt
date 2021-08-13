@@ -32,8 +32,8 @@ fun Fragment.createBroadcastManager(vararg actions: String, callback: (action: S
         }
     }
 
-    context?.let {
-        LocalBroadcastManager.getInstance(it).apply {
+    context?.let { context ->
+        LocalBroadcastManager.getInstance(context).apply {
             broadcastManager = this
             reloadReceiver?.let { this.registerReceiver(it, filter) }
         }
