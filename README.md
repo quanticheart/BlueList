@@ -22,6 +22,7 @@ Algumas Libs que foram utilizadas no projeto BluList.
 | Timber | https://github.com/JakeWharton/timber |
 | Coroutines | https://developer.android.com/kotlin/coroutines |
 | Lottie | https://github.com/airbnb/lottie-android |
+| Git Version | https://github.com/gladed/gradle-android-git-version |
 
 
 ## Proposta
