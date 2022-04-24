@@ -20,12 +20,12 @@ import com.quanticheart.core.system.broadcast.createBroadcastManager
 import com.quanticheart.domain.model.ToDoSimple
 
 class ToDoListFragment :
-    BaseFragment<ToDoListViewModel, FragmentToDoListBinding>(R.layout.fragment_to_do_list),
+    BaseFragment<ToDoListViewModel, FragmentToDoListBinding>(),
     ListClickListener<ToDoSimple> {
 
     private val adapter by lazy { ToDoAdapter(this) }
 
-    override fun onFinishBindingView(binding: FragmentToDoListBinding) {
+    override fun view(binding: FragmentToDoListBinding) {
         binding.viewModel = viewModel
         binding.adapter = adapter
         binding.addMoreToDo.setSafeOnClickListener {
@@ -52,14 +52,14 @@ class ToDoListFragment :
         }
     }
 
-    override fun onFinishLoadViewModel(viewModel: ToDoListViewModel) {
+    override fun viewModel(viewModel: ToDoListViewModel) {
         viewModel.apply {
             loading.observerNotNull(this@ToDoListFragment) {
                 loading(it)
             }
 
             throwable.observerNotNull(this@ToDoListFragment) {
-                dialogAlert("Tivemos um problema", it.message, "OK")
+                dialogAlert("Tivemos um problema", it?.message, "OK")
             }
 
             list.observeListNotEmpty(this@ToDoListFragment) {
@@ -70,9 +70,12 @@ class ToDoListFragment :
     }
 
     override fun itemClickListener(item: ToDoSimple) {
-        findNavController().navigate(R.id.toDoDetailsFragment, Bundle().apply {
-            putInt(ToDoConstants.KEY_TO_DO_ID, item.id)
-        })
+        findNavController().navigate(
+            R.id.toDoDetailsFragment,
+            Bundle().apply {
+                putInt(ToDoConstants.KEY_TO_DO_ID, item.id)
+            }
+        )
     }
 
     override fun itemSelectedListener(item: ToDoSimple) {

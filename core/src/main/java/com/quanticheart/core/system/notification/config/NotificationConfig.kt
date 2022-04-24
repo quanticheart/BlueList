@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_PARAMETER", "unused")
 
 package com.quanticheart.core.system.notification.config
-/* ktlint-disable no-wildcard-imports */
+
 import android.annotation.SuppressLint
 import android.app.NotificationManager
 import android.content.ContentResolver
@@ -41,9 +41,9 @@ internal object NotificationConfig {
     const val priorityNotification = NotificationManager.IMPORTANCE_HIGH
 
     /**
-    //
-    // ** FirebaseNotificationReceiver Style
-    //
+     //
+     // ** FirebaseNotificationReceiver Style
+     //
      */
 // getStyle BigText
     fun getBigTextStyle(mMessage: String?): NotificationCompat.BigTextStyle {
@@ -56,9 +56,9 @@ internal object NotificationConfig {
     }
 
     /**
-    //
-    // ** Make Sound System
-    // https://stackoverflow.com/questions/53913251/different-notification-sound-not-working-in-oreo
+     //
+     // ** Make Sound System
+     // https://stackoverflow.com/questions/53913251/different-notification-sound-not-working-in-oreo
      */
 //    fun getSoundNotification(context: Context) = context.makeUriByRAW(R.raw.notify)
 

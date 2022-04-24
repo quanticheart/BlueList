@@ -10,8 +10,8 @@ import com.quanticheart.core.system.notification.getNotificationID
 import com.quanticheart.core.system.notification.notifyCancel
 import com.quanticheart.domain.interaction.toDo.GetToDoUserCase
 import com.quanticheart.domain.result.onSuccess
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class ActionNotificationReceiver : BroadcastReceiver() {
     private val helper: MyHelper by lazy { MyHelper() }

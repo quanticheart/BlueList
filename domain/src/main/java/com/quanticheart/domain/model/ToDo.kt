@@ -1,6 +1,6 @@
 package com.quanticheart.domain.model
 
-import java.util.*
+import java.util.Date
 
 data class ToDo(
     val id: Int,

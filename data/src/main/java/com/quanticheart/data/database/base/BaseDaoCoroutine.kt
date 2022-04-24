@@ -1,5 +1,5 @@
 package com.quanticheart.data.database.base
-/* ktlint-disable no-wildcard-imports */
+
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
 

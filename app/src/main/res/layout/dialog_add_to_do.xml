@@ -31,14 +31,16 @@
                 style="@style/default_edittext"
                 android:layout_marginTop="@dimen/default_margin"
                 android:autofillHints="@string/hint_to_do_title"
-                android:hint="@string/hint_to_do_title" />
+                android:hint="@string/hint_to_do_title"
+                tools:ignore="RequiredSize" />
 
             <EditText
                 android:id="@+id/desc"
                 style="@style/default_edittext_text_field"
                 android:layout_marginTop="@dimen/default_margin"
                 android:autofillHints="@string/hint_to_do_description"
-                android:hint="@string/hint_to_do_description" />
+                android:hint="@string/hint_to_do_description"
+                tools:ignore="RequiredSize" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -136,12 +138,12 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:textColor="@color/text_color"
                     android:id="@+id/cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/label_cancel"
+                    android:textColor="@color/text_color"
                     android:textSize="12sp" />
 
                 <View
@@ -149,12 +151,12 @@
                     android:layout_height="0dp" />
 
                 <Button
-                    android:textColor="@color/text_color"
                     android:id="@+id/btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/label_add"
+                    android:textColor="@color/text_color"
                     android:textSize="12sp" />
 
             </LinearLayout>

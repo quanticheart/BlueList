@@ -15,8 +15,8 @@ open class BaseViewModel : ViewModel() {
     val loading: LiveData<Boolean>
         get() = _loading
 
-    private val _throwable = MutableLiveData<Throwable>()
-    val throwable: LiveData<Throwable>
+    private val _throwable = MutableLiveData<Throwable?>()
+    val throwable: LiveData<Throwable?>
         get() = _throwable
 
     protected fun showLoading() {

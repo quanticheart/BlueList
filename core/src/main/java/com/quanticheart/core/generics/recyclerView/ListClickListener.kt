@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.quanticheart.core.generics.recyclerView
 
 interface ListClickListener<T : Any> {

@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 configurations {
@@ -11,7 +11,7 @@ configurations {
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass.set("com.pinterest.ktlint.Main")
     args "src/**/*.kt"
     // to generate report in checkstyle format prepend following args:
     // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
@@ -21,7 +21,7 @@ task ktlint(type: JavaExec, group: "verification") {
 task ktlintFormat(type: JavaExec, group: "formatting") {
     description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass.set("com.pinterest.ktlint.Main")
     args "-F", "src/**/*.kt"
 }
 
@@ -31,11 +31,9 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {
@@ -55,22 +53,22 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures.viewBinding true
     buildFeatures {
         dataBinding = true
     }
 
-    // Auto Start Ktlint in Build APP Module
+//     Auto Start Ktlint in Build APP Module
     check.dependsOn ktlint
     android.libraryVariants.all { variant ->
         if (variant.buildType.name == "release") {
-            variant.javaCompiler.dependsOn(ktlint)
+            variant.javaCompileProvider.get().dependsOn(ktlint)
         }
     }
 }
 
 dependencies {
     implementation coreLibs
-
     //Kotlin verify code
     ktlint(ktlintLib.sdk)
 }

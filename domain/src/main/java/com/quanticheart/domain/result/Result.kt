@@ -1,5 +1,6 @@
 package com.quanticheart.domain.result
 
+@Suppress("unused")
 class RepositoryError(val throwable: Throwable, val errorCode: Int = 0)
 
 sealed class ResultRepository<out T : Any>

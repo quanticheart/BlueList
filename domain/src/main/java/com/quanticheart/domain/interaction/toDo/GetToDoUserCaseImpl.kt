@@ -21,5 +21,4 @@ class GetToDoUserCaseImpl(private val repository: ToDoRepository) : GetToDoUserC
 
     override suspend fun finish(id: Int): ResultRepository<Boolean> =
         repository.finish(id)
-
 }

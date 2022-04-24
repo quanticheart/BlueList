@@ -1,6 +1,5 @@
 package com.quanticheart.data.repository
 
-/* ktlint-disable no-wildcard-imports */
 import com.quanticheart.core.extentions.system.coroutineIO
 import com.quanticheart.data.database.dao.ToDoDao
 import com.quanticheart.data.database.model.ToDoEntity

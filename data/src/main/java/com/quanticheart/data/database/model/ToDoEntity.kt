@@ -1,6 +1,5 @@
 package com.quanticheart.data.database.model
 
-/* ktlint-disable no-wildcard-imports */
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.quanticheart.data.mapper.DomainMapperWithList

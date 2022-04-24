@@ -16,9 +16,9 @@ class ToDoDetailsViewModel(private val userCase: GetToDoUserCase) : BaseViewMode
 
     fun loadDetails(id: Int) {
         coroutineScopeLaunchLoading {
-            details.value = null
+//            details.value = null
             userCase.getDetails(id).onSuccess {
-                details.value = it
+                details.postValue(it)
             }.onFailure {
                 it.throwable.alertError()
             }

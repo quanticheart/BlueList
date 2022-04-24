@@ -6,17 +6,19 @@
     <application
         android:name=".application.BluListApplication"
         android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:icon="${appIcon}"
         android:label="${labelName}"
         android:roundIcon="${appIcon}_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BlueList"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup,DataExtractionRules,UnusedAttribute">
 
         <receiver android:name=".notification.ActionNotificationReceiver" />
 
         <activity
             android:name=".view.MainActivity"
+            android:exported="true"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.1.3" type="baseline" client="gradle" dependencies="false" name="AGP (7.1.3)" variant="fatal" version="7.1.3">
+
+    <issue
+        id="Instantiatable"
+        message="`BluListApplication` must extend android.app.Application"
+        errorLine1="        android:name=&quot;.application.BluListApplication&quot;"
+        errorLine2="                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="7"
+            column="23"/>
+    </issue>
+
+    <issue
+        id="Instantiatable"
+        message="`MainActivity` must extend android.app.Activity"
+        errorLine1="            android:name=&quot;.view.MainActivity&quot;"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="20"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="Instantiatable"
+        message="`ToDoDetailsActivity` must extend android.app.Activity"
+        errorLine1="            android:name=&quot;.view.fragment.details.ToDoDetailsActivity&quot;"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="30"
+            column="27"/>
+    </issue>
+
+</issues>

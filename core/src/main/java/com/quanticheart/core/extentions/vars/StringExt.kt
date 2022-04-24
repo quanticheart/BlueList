@@ -1,7 +1,6 @@
 @file:Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 
 package com.quanticheart.core.extentions.vars
-/* ktlint-disable no-wildcard-imports */
 
 import android.os.Build
 import android.text.Html

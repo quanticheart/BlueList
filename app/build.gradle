@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.kapt'
 }
 
 androidGitVersion {
@@ -22,7 +22,7 @@ configurations {
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass.set("com.pinterest.ktlint.Main")
     args "src/**/*.kt"
     // to generate report in checkstyle format prepend following args:
     // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
@@ -32,7 +32,7 @@ task ktlint(type: JavaExec, group: "verification") {
 task ktlintFormat(type: JavaExec, group: "formatting") {
     description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
-    main = "com.pinterest.ktlint.Main"
+    mainClass.set("com.pinterest.ktlint.Main")
     args "-F", "src/**/*.kt"
 }
 
@@ -40,7 +40,7 @@ android {
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
-        resConfigs "pt"
+        resConfigs 'pt'
 
         applicationId "com.quanticheart.bluelist"
         minSdkVersion rootProject.minSdkVersion
@@ -110,14 +110,17 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
+        viewBinding true
         dataBinding = true
     }
-
+    lint {
+        baseline file('lint-baseline.xml')
+    }
     // Auto Start Ktlint in Build APP Module
     check.dependsOn ktlint
     android.applicationVariants.all { variant ->
         if (variant.buildType.name == "release") {
-            variant.javaCompiler.dependsOn(ktlint)
+            variant.javaCompileProvider.get().dependsOn(ktlint)
         }
     }
 }
@@ -127,7 +130,6 @@ dependencies {
 
     //Kotlin verify code
     ktlint(ktlintLib.sdk)
-
     implementation project(":core")
     implementation project(":domain")
     implementation project(":data")

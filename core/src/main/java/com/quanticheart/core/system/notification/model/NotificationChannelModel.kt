@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.quanticheart.core.system.notification.model
 
 class NotificationChannelModel(

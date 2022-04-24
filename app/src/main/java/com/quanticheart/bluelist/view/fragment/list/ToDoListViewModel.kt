@@ -18,7 +18,7 @@ class ToDoListViewModel(private val userCase: GetToDoUserCase) : BaseViewModel()
 
     fun loadToDoList() {
         coroutineScopeLaunchLoading {
-            list.value = null
+            list.value = arrayListOf()
             userCase.getList().onSuccess {
                 list.value = it
             }.onFailure {

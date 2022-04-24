@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.quanticheart.bluelist.application
 
 import android.content.Intent
@@ -26,7 +28,6 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
 class BluListApplication : BaseApplication() {
-
     private val userCase: GetNotificationUserCase by inject()
 
     override fun buildVariant(): Boolean = BuildConfig.DEBUG
@@ -74,11 +75,7 @@ class BluListApplication : BaseApplication() {
         startKoin {
             if (BuildConfig.DEBUG) androidLogger(Level.DEBUG)
             androidContext(this@BluListApplication)
-            modules(appModules + dataModules + domainModules)
+            modules(appModule, databaseModule, interactionModule, repositoryModule)
         }
     }
-
-    val appModules = listOf(appModule)
-    val dataModules = listOf(databaseModule, repositoryModule)
-    val domainModules = listOf(interactionModule)
 }

@@ -1,5 +1,5 @@
 package com.quanticheart.core.extentions.system
-/* ktlint-disable no-wildcard-imports */
+
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
@@ -23,8 +23,10 @@ fun Context.showDatePicker(callback: (date: String) -> Unit) {
         }
 
     DatePickerDialog(
-        this, date, myCalendar
-            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+        this, date,
+        myCalendar
+            .get(Calendar.YEAR),
+        myCalendar.get(Calendar.MONTH),
         myCalendar.get(Calendar.DAY_OF_MONTH)
     ).show()
 }
@@ -35,8 +37,8 @@ fun Context.showTimePicker(callback: (time: String) -> Unit) {
     val minute = myCalendar[Calendar.MINUTE]
     val mTimePicker = TimePickerDialog(
         this, { _, selectedHour, selectedMinute ->
-            callback("$selectedHour:$selectedMinute:00")
-        }, hour, minute, true
+        callback("$selectedHour:$selectedMinute:00")
+    }, hour, minute, true
     )
     mTimePicker.setTitle(getString(R.string.label_select_hour))
     mTimePicker.show()

@@ -15,8 +15,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.quanticheart.core.base.dialog.constants.DialogConstants
-import com.quanticheart.core.extentions.vars.toDp
 import com.quanticheart.core.extentions.system.logI
+import com.quanticheart.core.extentions.vars.toDp
 
 abstract class BaseBottonSheetFragmentDialog<T : ViewDataBinding>(
     private val activity: Activity,

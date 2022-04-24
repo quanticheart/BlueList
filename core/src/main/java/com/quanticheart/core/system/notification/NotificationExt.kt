@@ -144,8 +144,6 @@ private fun Context.createNotificationManager(
 
 fun Context.notifyCancel(notificationID: Int) {
     (getSystemService(NOTIFICATION_SERVICE) as NotificationManager?)?.cancel(notificationID)
-    val it = Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
-    sendBroadcast(it)
 }
 
 fun Intent.getNotificationID(): Int {
