@@ -15,12 +15,9 @@
 local.properties
 /.idea/vcs.xml
 
-# Gradle files
-.gradle/
-build/
-
 # Android Studio
 /*/build/
+/*/.gradle/
 /*/local.properties
 /*/out
 /*/*/build
