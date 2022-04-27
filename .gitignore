@@ -14,3 +14,17 @@
 .cxx
 local.properties
 /.idea/vcs.xml
+
+# Gradle files
+.gradle/
+build/
+
+# Android Studio
+/*/build/
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.ipr
+*~
+*.swp
