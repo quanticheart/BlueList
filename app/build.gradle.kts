@@ -16,7 +16,6 @@ android {
     defaultConfig {
         versionName = androidGitVersion.name()
         versionCode = androidGitVersion.code()
-        multiDexEnabled = true
         base.archivesName.set("${applicationId}-v${versionName}-(${versionCode})")
     }
 }
