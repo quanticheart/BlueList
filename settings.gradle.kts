@@ -13,7 +13,9 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Blue List"
-include ':app'
-include ':core'
-include ':data'
-include ':domain'
+include(
+    ":app",
+    ":core",
+    ":data",
+    ":domain"
+)

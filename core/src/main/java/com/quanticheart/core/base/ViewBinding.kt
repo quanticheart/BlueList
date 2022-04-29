@@ -61,22 +61,22 @@ internal fun <VB : ViewBinding> GenericBinding(viewBindingClass: Class<VB>): Inf
     if (BuildConfig.DEBUG) {
         Timber.e("Inflate ${viewBindingClass.name} binding class")
     }
-    return try {
+//    return try {
         val method = viewBindingClass.getDeclaredMethod(
             "inflate",
             LayoutInflater::class.java,
             ViewGroup::class.java,
             Boolean::class.javaPrimitiveType
         )
-        FullInflateViewBinding(method)
-    } catch (e: NoSuchMethodException) {
-        val method = viewBindingClass.getDeclaredMethod(
-            "inflate",
-            LayoutInflater::class.java,
-            ViewGroup::class.java
-        )
-        MergeInflateViewBinding(method)
-    }
+      return  FullInflateViewBinding(method)
+//    } catch (e: NoSuchMethodException) {
+//        val method = viewBindingClass.getDeclaredMethod(
+//            "inflate",
+//            LayoutInflater::class.java,
+//            ViewGroup::class.java
+//        )
+//        MergeInflateViewBinding(method)
+//    }
 }
 
 @RestrictTo(LIBRARY)

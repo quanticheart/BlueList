@@ -10,8 +10,8 @@ import android.graphics.Bitmap
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.quanticheart.core.exeptions.sendException
-import com.quanticheart.core.extentions.system.toBroadcastPendingIntent
-import com.quanticheart.core.extentions.system.toPendingIntent
+import com.quanticheart.core.extentions.system.anko.toBroadcastPendingIntent
+import com.quanticheart.core.extentions.system.anko.toPendingIntent
 import com.quanticheart.core.system.notification.config.NOTIFICATION_ID
 import com.quanticheart.core.system.notification.config.NotificationConfig.colorNotification
 import com.quanticheart.core.system.notification.config.NotificationConfig.getBigTextStyle
