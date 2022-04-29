@@ -18,6 +18,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 repositories {
     google()
     mavenCentral()
+    gradlePluginPortal()
 }
 
 tasks.withType<PluginUnderTestMetadata>().configureEach {

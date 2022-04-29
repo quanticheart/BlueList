@@ -30,6 +30,10 @@ class CommonBaseAppPlugin : Plugin<Project> {
             apply("kotlin-android")
             apply("kotlin-kapt")
         }
+
+        this@applyPlugins.apply {
+            from("$rootDir/buildSrc/config/ktlint.gradle.kts")
+        }
     }
 
     private fun Project.androidConfig() {
