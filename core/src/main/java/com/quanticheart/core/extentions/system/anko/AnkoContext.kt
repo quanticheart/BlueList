@@ -1,12 +1,14 @@
+@file:Suppress("FunctionName", "unused")
+
 package com.quanticheart.core.extentions.system.anko
 
 import android.app.Activity
-import android.app.Fragment
 import android.content.Context
 import android.content.ContextWrapper
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewManager
+import androidx.fragment.app.Fragment
 import com.quanticheart.core.extentions.system.anko.AnkoInternals.createAnkoContext
 
 interface AnkoContext<out T> : ViewManager {
@@ -97,7 +99,7 @@ open class AnkoContextImpl<T>(
         }
     }
 
-    open protected fun alreadyHasView(): Unit =
+    protected open fun alreadyHasView(): Unit =
         throw IllegalStateException("View is already set: $myView")
 }
 
@@ -107,7 +109,7 @@ fun Context.UI(setContentView: Boolean, init: AnkoContext<Context>.() -> Unit) =
 fun Context.UI(init: AnkoContext<Context>.() -> Unit) = createAnkoContext(this, init)
 
 fun Fragment.UI(init: AnkoContext<Fragment>.() -> Unit): AnkoContext<Fragment> =
-    createAnkoContext(activity, init)
+    createAnkoContext(requireActivity(), init)
 
 interface AnkoComponent<T> {
     fun createView(ui: AnkoContext<T>): View

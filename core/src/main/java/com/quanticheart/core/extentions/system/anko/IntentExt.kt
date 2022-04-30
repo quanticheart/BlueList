@@ -80,29 +80,21 @@ inline fun <reified T : Any> Fragment.intentFor(vararg params: Pair<String, Any?
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.clearTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK) }
+fun Intent.clearTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK) }
 
 /**
  * Add the [Intent.FLAG_ACTIVITY_CLEAR_TOP] flag to the [Intent].
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.clearTop(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
-
-/**
- * Add the [Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET] flag to the [Intent].
- *
- * @return the same intent with the flag applied.
- */
-inline fun Intent.clearWhenTaskReset(): Intent =
-    apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET) }
+fun Intent.clearTop(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) }
 
 /**
  * Add the [Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS] flag to the [Intent].
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.excludeFromRecents(): Intent =
+fun Intent.excludeFromRecents(): Intent =
     apply { addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS) }
 
 /**
@@ -110,77 +102,77 @@ inline fun Intent.excludeFromRecents(): Intent =
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.multipleTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK) }
+fun Intent.multipleTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK) }
 
 /**
  * Add the [Intent.FLAG_ACTIVITY_NEW_TASK] flag to the [Intent].
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.newTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }
+fun Intent.newTask(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) }
 
 /**
  * Add the [Intent.FLAG_ACTIVITY_NO_ANIMATION] flag to the [Intent].
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.noAnimation(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION) }
+fun Intent.noAnimation(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION) }
 
 /**
  * Add the [Intent.FLAG_ACTIVITY_NO_HISTORY] flag to the [Intent].
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.noHistory(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY) }
+fun Intent.noHistory(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY) }
 
 /**
  * Add the [Intent.FLAG_ACTIVITY_SINGLE_TOP] flag to the [Intent].
  *
  * @return the same intent with the flag applied.
  */
-inline fun Intent.singleTop(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP) }
+fun Intent.singleTop(): Intent = apply { addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP) }
 
-inline fun AnkoContext<*>.browse(url: String, newTask: Boolean = false) = ctx.browse(url, newTask)
-inline fun Fragment.browse(url: String, newTask: Boolean = false) =
+fun AnkoContext<*>.browse(url: String, newTask: Boolean = false) = ctx.browse(url, newTask)
+fun Fragment.browse(url: String, newTask: Boolean = false) =
     requireActivity().browse(url, newTask)
 
 fun Context.browse(url: String, newTask: Boolean = false): Boolean {
-    try {
+    return try {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         if (newTask) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         startActivity(intent)
-        return true
+        true
     } catch (e: ActivityNotFoundException) {
         e.printStackTrace()
-        return false
+        false
     }
 }
 
-inline fun AnkoContext<*>.share(text: String, subject: String = "") = ctx.share(text, subject)
-inline fun Fragment.share(text: String, subject: String = "") =
+fun AnkoContext<*>.share(text: String, subject: String = "") = ctx.share(text, subject)
+fun Fragment.share(text: String, subject: String = "") =
     requireActivity().share(text, subject)
 
 fun Context.share(text: String, subject: String = ""): Boolean {
-    try {
+    return try {
         val intent = Intent(android.content.Intent.ACTION_SEND)
         intent.type = "text/plain"
         intent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject)
         intent.putExtra(android.content.Intent.EXTRA_TEXT, text)
         startActivity(Intent.createChooser(intent, null))
-        return true
+        true
     } catch (e: ActivityNotFoundException) {
         e.printStackTrace()
-        return false
+        false
     }
 }
 
-inline fun AnkoContext<*>.email(email: String, subject: String = "", text: String = "") =
+fun AnkoContext<*>.email(email: String, subject: String = "", text: String = "") =
     ctx.email(email, subject, text)
 
-inline fun Fragment.email(email: String, subject: String = "", text: String = "") =
+fun Fragment.email(email: String, subject: String = "", text: String = "") =
     requireActivity().email(email, subject, text)
 
 fun Context.email(email: String, subject: String = "", text: String = ""): Boolean {
@@ -199,35 +191,35 @@ fun Context.email(email: String, subject: String = "", text: String = ""): Boole
 
 }
 
-inline fun AnkoContext<*>.makeCall(number: String): Boolean = ctx.makeCall(number)
-inline fun Fragment.makeCall(number: String): Boolean = requireActivity().makeCall(number)
+fun AnkoContext<*>.makeCall(number: String): Boolean = ctx.makeCall(number)
+fun Fragment.makeCall(number: String): Boolean = requireActivity().makeCall(number)
 
 fun Context.makeCall(number: String): Boolean {
-    try {
+    return try {
         val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$number"))
         startActivity(intent)
-        return true
+        true
     } catch (e: Exception) {
         e.printStackTrace()
-        return false
+        false
     }
 }
 
-inline fun AnkoContext<*>.sendSMS(number: String, text: String = ""): Boolean =
+fun AnkoContext<*>.sendSMS(number: String, text: String = ""): Boolean =
     ctx.sendSMS(number, text)
 
-inline fun Fragment.sendSMS(number: String, text: String = ""): Boolean =
+fun Fragment.sendSMS(number: String, text: String = ""): Boolean =
     requireActivity().sendSMS(number, text)
 
 fun Context.sendSMS(number: String, text: String = ""): Boolean {
-    try {
+    return try {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:$number"))
         intent.putExtra("sms_body", text)
         startActivity(intent)
-        return true
+        true
     } catch (e: Exception) {
         e.printStackTrace()
-        return false
+        false
     }
 }
 

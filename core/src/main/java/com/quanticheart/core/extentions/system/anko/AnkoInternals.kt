@@ -240,7 +240,8 @@ object AnkoInternals {
             when (config.orientation) {
                 Configuration.ORIENTATION_LANDSCAPE -> if (orientation != Orientation.LANDSCAPE) return false
                 Configuration.ORIENTATION_PORTRAIT -> if (orientation != Orientation.PORTRAIT) return false
-                Configuration.ORIENTATION_SQUARE -> if (orientation != Orientation.SQUARE) return false
+                Configuration.ORIENTATION_UNDEFINED -> if (orientation != Orientation.SQUARE) return false
+                else -> return false
             }
         }
 

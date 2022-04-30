@@ -9,7 +9,7 @@ object Dependencies {
      * Kotlin std lib
      */
     val kotlinLibs = arrayListOf<String>().apply {
-        add("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+        add("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
     }
 
     /**
@@ -26,24 +26,24 @@ object Dependencies {
      */
     private const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     private const val core = "androidx.core:core-ktx:${Versions.coreKtx}"
-    private const val constraintlayout = "androidx.constraintlayout:constraintlayout:1.1.3"
-    private const val recyclerview = "androidx.recyclerview:recyclerview:1.0.0"
+    private const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.3"
+    private const val recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
     private const val cardview = "androidx.cardview:cardview:1.0.0"
     private const val swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     private const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     private const val lifecycle_run_time =
-        "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle}"
+        "androidx.lifecycle:lifecycle-runtime:2.4.1"
     private const val lifecycle_viewmodel =
-        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
     private const val navigation_fragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     private const val navigation_ui = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-    private const val lottie = "com.airbnb.android:lottie:4.0.0"
+    private const val lottie = "com.airbnb.android:lottie:5.1.1"
 
     /**
      * Google
      */
-    private const val material = "com.google.android.material:material:1.3.0"
+    private const val material = "com.google.android.material:material:1.5.0"
 
     val appLibraries = arrayListOf<String>().apply {
         add(appcompat)
@@ -115,8 +115,8 @@ object Dependencies {
     /**
      * Commons - Core
      */
-    internal const val glideCompiler = "com.github.bumptech.glide:compiler:4.12.0"
-    private const val glide = "com.github.bumptech.glide:glide:4.12.0"
+    internal const val glideCompiler = "com.github.bumptech.glide:compiler:4.13.1"
+    private const val glide = "com.github.bumptech.glide:glide:4.13.1"
     private const val timber = "com.jakewharton.timber:timber:5.0.1"
 
     val commonsLibraries = arrayListOf<String>().apply {

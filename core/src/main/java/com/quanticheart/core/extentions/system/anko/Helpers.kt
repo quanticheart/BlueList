@@ -2,9 +2,9 @@ package com.quanticheart.core.extentions.system.anko
 
 
 import android.app.Activity
-import android.app.Fragment
 import android.content.Context
 import android.os.Build
+import androidx.fragment.app.Fragment
 
 open class AnkoException(message: String = "") : RuntimeException(message)
 
@@ -217,14 +217,12 @@ inline fun <T : Any> Fragment.configuration(
     smallestWidth: Int? = null,
     f: () -> T
 ): T? {
-    val act = activity
-    return if (act != null) {
-        if (AnkoInternals.testConfiguration(
-                act, screenSize, density, language, orientation, long,
-                fromSdk, sdk, uiMode, nightMode, rightToLeft, smallestWidth
-            )
-        ) f() else null
-    } else null
+    val act = requireActivity()
+    return if (AnkoInternals.testConfiguration(
+            act, screenSize, density, language, orientation, long,
+            fromSdk, sdk, uiMode, nightMode, rightToLeft, smallestWidth
+        )
+    ) f() else null
 }
 
 /**
