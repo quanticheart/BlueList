@@ -2,6 +2,7 @@ plugins {
     id("com.android.application") apply false
     id("com.android.library") apply false
     id("org.jetbrains.kotlin.android") apply false
+    id("com.gladed.androidgitversion") version "0.4.14" apply false
     id("com.github.ben-manes.versions") version "0.42.0"
 }
 

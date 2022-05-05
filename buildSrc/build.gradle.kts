@@ -11,18 +11,14 @@ gradlePlugin {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
 repositories {
     google()
     mavenCentral()
     gradlePluginPortal()
 }
 
-tasks.withType<PluginUnderTestMetadata>().configureEach {
-    pluginClasspath.from(configurations.compileOnly)
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "1.8"
 }
 
 dependencies {

@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("app-plugin")
-    id("com.gladed.androidgitversion") version "0.4.14"
+    id("com.gladed.androidgitversion")
 }
 
 android {
