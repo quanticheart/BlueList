@@ -4,6 +4,8 @@ import App
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.configure
 
 val Project.android: BaseExtension
     get() = extensions.findByName("android") as? BaseExtension
@@ -116,6 +118,17 @@ private val javaVersion = JavaVersion.VERSION_1_8
  */
 fun BaseExtension.appCompileOptions() {
     compileOptions {
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
+}
+
+/**
+ * Java
+ *
+ */
+fun Project.java() {
+    configure<JavaPluginExtension> {
         sourceCompatibility = javaVersion
         targetCompatibility = javaVersion
     }

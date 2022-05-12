@@ -31,7 +31,7 @@ class CommonBaseAppPlugin : Plugin<Project> {
             apply("kotlin-kapt")
         }
 
-        this@applyPlugins.apply {
+        apply {
             from("$rootDir/buildSrc/config/ktlint.gradle.kts")
         }
     }

@@ -8,6 +8,10 @@ gradlePlugin {
             id = "app-plugin"
             implementationClass = "plugin.CommonBaseAppPlugin"
         }
+        register("base-kotlin-plugin") {
+            id = "base-kotlin-plugin"
+            implementationClass = "plugin.CommonKotlinBaseAppPlugin"
+        }
     }
 }
 
